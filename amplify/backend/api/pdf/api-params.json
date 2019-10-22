@@ -1,0 +1,34 @@
+{
+    "paths": [
+        {
+            "name": "/pdfs",
+            "lambdaFunction": "pdfupload",
+            "privacy": {
+                "open": true
+            }
+        }
+    ],
+    "resourceName": "pdf",
+    "apiName": "pdf",
+    "functionArns": [
+        {
+            "lambdaFunction": "pdfupload"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "pdf2imgspa-dev-20191017120304-authRole",
+        "unAuthRoleName": "pdf2imgspa-dev-20191017120304-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "pdfupload",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}
