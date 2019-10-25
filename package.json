@@ -11,6 +11,8 @@
     "react-bootstrap": "^1.0.0-beta.14",
     "react-dom": "^16.10.2",
     "react-image": "^2.2.1",
+    "react-modal-image": "^2.5.0",
+    "react-paginate": "^6.3.0",
     "react-pdf": "^4.1.0",
     "react-scripts": "3.2.0",
     "react-spinners": "^0.6.1"

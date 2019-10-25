@@ -1,3 +1,20 @@
 .imageStyle {
   width: 100%
 }
+
+.image-background {
+  background-color: #F5F9FA;
+  padding: 10px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  margin-left: -6px;
+  margin-right: -6px;
+}
+
+.button-padding {
+  margin-top: 5px;
+}
+
+.center {
+  text-align: center;
+}
