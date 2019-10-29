@@ -1,18 +1,16 @@
 import React, { Component } from 'react';
-import './Image.css';
+import './Zip.css';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
-import GridLoader from 'react-spinners/GridLoader';
-import ModalImage from "react-modal-image";
+import BeatLoader from 'react-spinners/BeatLoader';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 //import { download } from '@fortawesome/fontawesome-svg-core'
 
-class Image extends Component {
+class Zip extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: 'default',
       errored: false,
       loading: true,
       loaded: 0
@@ -20,13 +18,11 @@ class Image extends Component {
 
     this.sleep = this.sleep.bind(this);
     this.tryRequire = this.tryRequire.bind(this);
-    this.conditionalRender = this.conditionalRender.bind(this);
   }
 
   componentDidMount = async () => {
-    this.setState({name: this.props.meta})
     var buffer=1000
-    while (await this.tryRequire(this.props.meta)===403) {
+    while (await this.tryRequire(this.props.fileName)===403) {
       await this.sleep(buffer);
       buffer = buffer * 1.1
       console.log(buffer)
@@ -35,6 +31,7 @@ class Image extends Component {
         return null;
       }
     }
+    this.props.addToPreviousUploads()
     this.setState({loaded: 2})
   }
 
@@ -49,44 +46,36 @@ class Image extends Component {
   tryRequire = async (path) => {
     try {
       var http = new XMLHttpRequest();
+
       http.open('HEAD', path, false);
       http.send();
-     return http.status;
+      return http.status;
     } catch (err) {
       console.log(`err: ${err}`);
      return null;
     }
   };
 
-  conditionalRender = () => {
-
-    return (
-      <ModalImage
-        small={this.props.meta}
-        large={this.props.meta}
-      />
-    )
-  }
-
-  imagePlaceHolder = () => {
+  zipDownload = () => {
     if (this.state.loaded===2){
+
       return (
         <React.Fragment>
-          { this.conditionalRender() }
+          <Button variant="secondary" href={this.props.fileName} className="button-padding"><span className='large-image'><FontAwesomeIcon icon="download" /></span>All Images(Zip File)</Button>
         </React.Fragment>
       );
     } else {
       return (
-        <div className='center'>
-          <div className='block'>
-            <GridLoader
+        <React.Fragment>
+          <Button variant="secondary" className="button-padding">Creating your zip file..
+            <BeatLoader
               sizeUnit={"px"}
-              size={35}
+              size={25}
               color={'#123abc'}
               loading={this.state.loading}
             />
-          </div>
-        </div>
+          </Button>
+        </React.Fragment>
       )
     }
   }
@@ -94,17 +83,13 @@ class Image extends Component {
   render () {
 
     return (
-      <Col md={3}>
-        <div className="image-background">
-        { this.state.modelActive ? this.showModal() : null}
-        { this.imagePlaceHolder() }
-        <Button variant="secondary" href={this.props.meta} className="button-padding"><FontAwesomeIcon icon="download" /></Button>
-        </div>
-      </Col>
+      <React.Fragment>
+        { this.zipDownload() }
+      </React.Fragment>
     )
   }
 }
 
 
 
-export default Image;
+export default Zip;

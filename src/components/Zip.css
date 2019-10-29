@@ -1,0 +1,16 @@
+
+.large-image .svg-inline--fa.fa-w-16 {
+  width: 1.6em;
+  height: 1.6em;
+  margin-right: 10px;
+}
+
+
+.button-padding {
+  margin: 15px;
+}
+
+
+.block {
+  display: inline-block;
+}
