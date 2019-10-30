@@ -56,7 +56,8 @@ class App extends Component {
       offset: 0,
       base_state: true,
       first_page: 1,
-      last_page: 8
+      last_page: 8,
+      error_message: ""
     };
 
     this._isMounted = false;
@@ -70,7 +71,7 @@ class App extends Component {
   }
 
   handleChange = (ev) => {
-    this.setState({success: false, successZip: false, file_name : ev.target.value});
+    this.setState({file_name : ev.target.value});
   }
 
   localIdentifier = (id) => {
@@ -85,15 +86,10 @@ class App extends Component {
   }
 
   grabPreviousUploads = () => {
-    debugger
     if (localStorage.getItem('previous_uploads')) {
-      debugger
       var prev_uploads = JSON.parse(localStorage.getItem('previous_uploads'))
-      debugger
       var valid_uploads = prev_uploads.filter(this.checkFileExistance);
-      debugger
       localStorage.setItem('previous_uploads', JSON.stringify(valid_uploads))
-      debugger
       return localStorage.getItem('previous_uploads');
     }
     else {
@@ -117,7 +113,6 @@ class App extends Component {
 
       http.open('HEAD', path, false);
       http.send();
-      debugger
       return http.status;
     } catch (err) {
       console.log(`err: ${err}`);
@@ -131,8 +126,13 @@ class App extends Component {
 
   addToPreviousUploads = () => {
     var prev_uploads = JSON.parse(this.grabPreviousUploads());
-    prev_uploads.push({uploadFileName: this.state.uploadFileName, numPages: this.state.numPages, s3SafeFileName: this.state.s3SafeFileName})
-    this.saveLocal('previous_uploads', JSON.stringify(prev_uploads))
+    var found = prev_uploads.find((upload) => {
+      return (upload.uploadFileName === this.state.uploadFileName && upload.numPages === this.state.numPages)
+    });
+    if (found === undefined) {
+      prev_uploads.push({uploadFileName: this.state.uploadFileName, numPages: this.state.numPages, s3SafeFileName: this.state.s3SafeFileName})
+      this.saveLocal('previous_uploads', JSON.stringify(prev_uploads))
+    }
     this.setState({success: true})
   }
 
@@ -142,9 +142,12 @@ class App extends Component {
     for(var index=1;index <= Math.min(pagesToDisplay,numPages) ;index++){
       imgs.push(`${imageBucket}${s3SafeFileName.split('.')[0]}/image${index}.jpg`);
     }
-    this.setState({success: true, images: imgs, analyzing: false, uploading: false, first_page: 1, last_page: Math.min(pagesToDisplay,numPages),base_state: false, uploadFileName, numPages, s3SafeFileName})
+    if (this.checkFileExistance({s3SafeFileName})) {
+      this.setState({success: true, images: imgs, analyzing: false, uploading: false, first_page: 1, last_page: Math.min(pagesToDisplay,numPages),base_state: false, uploadFileName, numPages, s3SafeFileName})
+    } else {
+      this.setState({error_message: "Can't find pdf - server probably deleted it"})
+    }
   }
-
 
 
   pdfUpload = async () => {
@@ -159,7 +162,7 @@ class App extends Component {
     let fileName = fileParts[0];
     let fileType = fileParts[1];
 
-    this.setState({ uploadFile:file, s3SafeFileName: `${this.localIdentifier('pcid')}${file.name.replace(/[^0-9a-zA-Z_.]/g, '')}`, uploadFileType:fileType,uploadFileName:fileName, analyzing: true, base_state: false})
+    this.setState({ error_message: "", success: false, successZip: false, uploadFile:file, s3SafeFileName: `${this.localIdentifier('pcid')}${file.name.replace(/[^0-9a-zA-Z_.]/g, '')}`, uploadFileType:fileType,uploadFileName:fileName, analyzing: true, base_state: false})
   }
 
   s3Upload = () => {
@@ -336,6 +339,12 @@ class App extends Component {
    )
  }
 
+ errorMessage = () => {
+   return (
+     <div class="error-message">{this.state.error_message}</div>
+   )
+ }
+
   render() {
     return (
       <Router>
@@ -349,6 +358,7 @@ class App extends Component {
                 <About />
               </Route>
               <Route path="/">
+                {this.state.error_message ? this.errorMessage() : null }
                 {this.state.base_state ? this.description() : null }
                 {this.state.uploading ? this.s3Upload() : null}
                 {this.state.numPages && this.state.uploading ? this.numPagesDisplay() : null}
