@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './Zip.css';
-import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import BeatLoader from 'react-spinners/BeatLoader';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

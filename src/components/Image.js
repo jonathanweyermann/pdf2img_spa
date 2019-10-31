@@ -98,7 +98,7 @@ class Image extends Component {
         <div className="image-background">
         { this.state.modelActive ? this.showModal() : null}
         { this.imagePlaceHolder() }
-        <Button variant="secondary" href={this.props.meta} className="button-padding"><FontAwesomeIcon icon="download" /></Button>
+        <Button variant="secondary" href={this.props.meta} className="button-padding-less"><FontAwesomeIcon icon="download" /></Button>
         </div>
       </Col>
     )

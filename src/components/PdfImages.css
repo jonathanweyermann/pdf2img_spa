@@ -1,0 +1,39 @@
+.pagination {
+  margin: 10px;
+  border-radius: 11px;
+  border-color: green;
+}
+.pagination li {
+  margin: 4px;
+  padding: 5px;
+  border-radius: 18px;
+  border-color: green;
+}
+.pagination li:hover {
+  background-color: #bae5ff;
+  cursor: pointer;
+}
+
+.mt2 {
+  margin-top: 20px;
+}
+
+.center {
+  text-align: center;
+}
+
+.active a {
+    color: red;
+  }
+
+.active {
+  background-color: #bae5ff;
+  border-width: thin;
+  border-style: solid;
+}
+
+.pages {
+  margin: 10px;
+  border: 2px;
+  border-color: green;
+}

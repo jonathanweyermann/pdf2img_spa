@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
 import './App.css';
-import Image from './components/Image'
 import Zip from './components/Zip'
 import About from './components/About'
+import PdfImages from './components/PdfImages'
 import axios from 'axios'
 import Amplify from 'aws-amplify';
 import awsmobile from './aws-exports';
 import { Document, pdfjs } from "react-pdf";
-import BarLoader from 'react-spinners/BarLoader';
-import { Navbar, NavDropdown, Nav, Row, Container, Button } from 'react-bootstrap';
-import ReactPaginate from 'react-paginate';
-import { BrowserRouter as Router, Switch, Route, useParams} from "react-router-dom";
+import { Navbar, NavDropdown, Nav, Container, Button } from 'react-bootstrap';
+import { BrowserRouter, Switch, Route} from "react-router-dom";
+import Spinner from './components/spinner'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faDownload } from '@fortawesome/free-solid-svg-icons'
@@ -19,21 +18,6 @@ library.add(faDownload)
 Amplify.configure(awsmobile);
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 axios.defaults.withCredentials = true
-
-
-export class Images extends Component {
-  render() {
-    let imageData = this.props.data.map((image, i) => {
-      // Return the element. Also pass key
-      return (<Image meta={image} key={i} />)
-    })
-    return (
-      <React.Fragment>
-        {imageData}
-      </React.Fragment>
-    );
-  }
-}
 
 const pagesToDisplay = 8;
 const imageBucket = 'https://quiztrainer-quiz-images-dev.s3-us-west-2.amazonaws.com/';
@@ -46,14 +30,13 @@ class App extends Component {
       success: false,
       successZip: false,
       analyzing: false,
-      file_name: "",
+      fileName: "",
       numPages: "",
       uploadFileType: "",
       uploadFile: "",
       uploadFileName: "",
-      s3SafeFileName: "x.x",
+      s3SafeFileName: "",
       uploading: false,
-      offset: 0,
       base_state: true,
       first_page: 1,
       last_page: 8,
@@ -61,7 +44,6 @@ class App extends Component {
     };
 
     this._isMounted = false;
-    this.allImages = this.allImages.bind(this);
     this.grabPreviousUploads = this.grabPreviousUploads.bind(this);
   }
 
@@ -71,7 +53,7 @@ class App extends Component {
   }
 
   handleChange = (ev) => {
-    this.setState({file_name : ev.target.value});
+    this.setState({fileName : ev.target.value});
   }
 
   localIdentifier = (id) => {
@@ -93,18 +75,12 @@ class App extends Component {
       return localStorage.getItem('previous_uploads');
     }
     else {
-      return []
+      return "[]"
     }
   }
 
   checkFileExistance = (upload) => {
-    var x = (this.tryRequire(`${imageBucket}pdfs/${upload.s3SafeFileName}`)===200)
-    console.log(`x: ${x}`)
-    return x
-  }
-
-  checkFilter = (x) => {
-    return false;
+    return (this.tryRequire(`${imageBucket}pdfs/${upload.s3SafeFileName}`)===200)
   }
 
   tryRequire = (path) => {
@@ -166,10 +142,6 @@ class App extends Component {
   }
 
   s3Upload = () => {
-
-    console.log("Preparing the upload");
-    console.log(this.state.s3SafeFileName)
-    console.log(this.state.uploadFileType)
     axios.post("https://iluo6vac3f.execute-api.us-west-2.amazonaws.com/dev2/pdfs",{
       fileName : this.state.s3SafeFileName,
       fileType : this.state.uploadFileType
@@ -205,72 +177,7 @@ class App extends Component {
     .catch(error => {
       console.log(JSON.stringify(error));
     })
-    return this.spinner()
- }
-
-
- spinner = () => {
-   return (
-     <div>
-       <BarLoader
-         sizeUnit={"%"}
-         heightUnit={"px"}
-         widthUnit={"percent"}
-         width={50}
-         height={23}
-         color={'#123abc'}
-         loading={true}
-       />
-       <div className="move-up">Loading.. Please wait</div>
-     </div>
-   )
- }
-
- allImages = () => {
-   return (
-     <div>
-       <div>
-          <h6 className='mt2 center'>{this.state.uploadFileName}.pdf: Page {this.state.first_page} to {this.state.last_page} of {this.state.numPages}</h6>
-       </div>
-       <Row>
-         <Images data={this.state.images} />
-       </Row>
-       <Row>
-         <ReactPaginate
-            previousLabel={'previous'}
-            nextLabel={'next'}
-            breakLabel={'...'}
-            breakClassName={'break-me'}
-            pageCount={this.state.numPages/pagesToDisplay}
-            marginPagesDisplayed={2}
-            pageRangeDisplayed={pagesToDisplay}
-            onPageChange={this.handlePageClick}
-            containerClassName={'pagination'}
-            subContainerClassName={'pages'}
-            activeClassName={'active'}
-         />
-        </Row>
-      </div>
-   )
- }
-
- handlePageClick = data => {
-   let offset = data.selected * pagesToDisplay;
-   var imgs = []
-   this.setState({ offset: offset }, () => {
-     for(var index=1+offset;index <= Math.min(pagesToDisplay+offset,this.state.numPages) ;index++){
-       imgs.push(`${imageBucket}${this.state.s3SafeFileName.split('.')[0]}/image${index}.jpg`);
-     }
-     this.setState({images: imgs, first_page: 1+offset, last_page: Math.min(pagesToDisplay+offset,this.state.numPages)})
-   });
- }
-
- imageShow = () => {
-   return (
-     <Container>
-       { this.state.images.length===0 ? this.spinner() : this.allImages() }
-     </Container>
-   )
+    return ( <Spinner /> )
  }
 
  documentAnalize = () => {
@@ -313,7 +220,7 @@ class App extends Component {
           <NavDropdown title="Previous PDFs" id="basic-nav-dropdown">
              {
 
-               (JSON.parse(this.grabPreviousUploads()) || []).map((item, i) => {
+               (JSON.parse(this.grabPreviousUploads()) || "[]").map((item, i) => {
                 // Return the element. Also pass key
 
                 return (<NavDropdown.Item key={i} onClick={() => this.setStateToSelectedPDF(item)}>{item["uploadFileName"]}</NavDropdown.Item>)
@@ -339,6 +246,16 @@ class App extends Component {
    )
  }
 
+ handlePageClick = data => {
+   debugger
+   let offset = data.selected * pagesToDisplay;
+   var imgs = []
+   for(var index=1+offset;index <= Math.min(pagesToDisplay+offset,this.state.numPages); index++){
+     imgs.push(`${imageBucket}${this.state.s3SafeFileName.split('.')[0]}/image${index}.jpg`);
+   }
+   this.setState({images: imgs, first_page: 1+offset, last_page: Math.min(pagesToDisplay+offset,this.state.numPages)})
+ }
+
  errorMessage = () => {
    return (
      <div class="error-message">{this.state.error_message}</div>
@@ -347,33 +264,31 @@ class App extends Component {
 
   render() {
     return (
-      <Router>
+      <BrowserRouter>
         <div className="App">
           <header className="App-header">
             { this.header() }
           </header>
           <div>
             <Switch>
-              <Route path="/about">
-                <About />
-              </Route>
+              <Route path="/about" component={About} />
               <Route path="/">
                 {this.state.error_message ? this.errorMessage() : null }
                 {this.state.base_state ? this.description() : null }
                 {this.state.uploading ? this.s3Upload() : null}
                 {this.state.numPages && this.state.uploading ? this.numPagesDisplay() : null}
                 {this.state.analyzing ? this.documentAnalize() : null}
-                {this.state.success ? this.imageShow() : null}
+                {this.state.success ? <PdfImages data={this.state} pagesToDisplay={pagesToDisplay} imageBucket={imageBucket} handlePageClick={this.handlePageClick} /> : null}
                 <Container>
                   {this.state.success ? (<Zip addToPreviousUploads={() => this.addToPreviousUploads()} fileName={`${imageBucket}${this.state.s3SafeFileName.split('.')[0]}.zip`} />) : null}
-                  <input className='btn btn-success input-padding' value={this.state.file_name} onChange={this.handleChange} ref={(ref) => { this.uploadInput = ref; }} type="file" accept=".pdf"/>
-                  <Button onClick={this.pdfUpload} disabled={!this.state.file_name} className='convert-button-padding'>Convert to JPG Images</Button>
+                  <input className='btn btn-success input-padding' value={this.state.fileName} onChange={this.handleChange} ref={(ref) => { this.uploadInput = ref; }} type="file" accept=".pdf"/>
+                  <Button onClick={this.pdfUpload} disabled={!this.state.fileName} className='convert-button-padding'>Convert to JPG Images</Button>
                 </Container>
               </Route>
             </Switch>
           </div>
         </div>
-      </Router>
+      </BrowserRouter>
     );
   }
 }

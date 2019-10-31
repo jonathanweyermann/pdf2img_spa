@@ -41,39 +41,6 @@
   color: #FFF !important;
 }
 
-
-.active a {
-    color: red;
-  }
-
-.active {
-  background-color: #bae5ff;
-  border-width: thin;
-  border-style: solid;
-}
-
-.pagination {
-  margin: 10px;
-  border-radius: 11px;
-  border-color: green;
-}
-.pagination li {
-  margin: 4px;
-  padding: 5px;
-  border-radius: 18px;
-  border-color: green;
-}
-.pagination li:hover {
-  background-color: #bae5ff;
-  cursor: pointer;
-}
-
-.pages {
-  margin: 10px;
-  border: 2px;
-  border-color: green;
-}
-
 .input-padding {
   margin-bottom: 10px;
   margin-top: 10px;
