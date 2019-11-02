@@ -3,6 +3,7 @@ import './Zip.css';
 import Button from 'react-bootstrap/Button';
 import BeatLoader from 'react-spinners/BeatLoader';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import FileStatus from '../util/FileStatus'
 
 //import { download } from '@fortawesome/fontawesome-svg-core'
 
@@ -16,12 +17,11 @@ class Zip extends Component {
     };
 
     this.sleep = this.sleep.bind(this);
-    this.tryRequire = this.tryRequire.bind(this);
   }
 
   componentDidMount = async () => {
     var buffer=1000
-    while (await this.tryRequire(this.props.fileName)===403) {
+    while (FileStatus(this.props.fileName)===403) {
       await this.sleep(buffer);
       buffer = buffer * 1.1
       console.log(buffer)
@@ -42,22 +42,8 @@ class Zip extends Component {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
-  tryRequire = async (path) => {
-    try {
-      var http = new XMLHttpRequest();
-
-      http.open('HEAD', path, false);
-      http.send();
-      return http.status;
-    } catch (err) {
-      console.log(`err: ${err}`);
-     return null;
-    }
-  };
-
   zipDownload = () => {
     if (this.state.loaded===2){
-
       return (
         <React.Fragment>
           <Button variant="secondary" href={this.props.fileName} className="button-padding"><span className='large-image'><FontAwesomeIcon icon="download" /></span>All Images(Zip File)</Button>
@@ -88,7 +74,5 @@ class Zip extends Component {
     )
   }
 }
-
-
 
 export default Zip;

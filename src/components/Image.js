@@ -5,8 +5,7 @@ import Button from 'react-bootstrap/Button';
 import GridLoader from 'react-spinners/GridLoader';
 import ModalImage from "react-modal-image";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
-//import { download } from '@fortawesome/fontawesome-svg-core'
+import FileStatus from '../util/FileStatus'
 
 class Image extends Component {
   constructor(props) {
@@ -19,14 +18,13 @@ class Image extends Component {
     };
 
     this.sleep = this.sleep.bind(this);
-    this.tryRequire = this.tryRequire.bind(this);
     this.conditionalRender = this.conditionalRender.bind(this);
   }
 
   componentDidMount = async () => {
     this.setState({name: this.props.meta})
     var buffer=1000
-    while (await this.tryRequire(this.props.meta)===403) {
+    while (FileStatus(this.props.meta)===403) {
       await this.sleep(buffer);
       buffer = buffer * 1.1
       console.log(buffer)
@@ -45,18 +43,6 @@ class Image extends Component {
   sleep = (ms) => {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
-
-  tryRequire = async (path) => {
-    try {
-      var http = new XMLHttpRequest();
-      http.open('HEAD', path, false);
-      http.send();
-     return http.status;
-    } catch (err) {
-      console.log(`err: ${err}`);
-     return null;
-    }
-  };
 
   conditionalRender = () => {
 
