@@ -1,0 +1,119 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`main component tests uploads a file 1`] = `
+<WrappedComponent
+  previous_uploads={
+    Array [
+      Object {
+        "numPages": 2,
+        "s3SafeFileName": "78559523template.pdf",
+        "uploadFileName": "template",
+      },
+      Object {
+        "numPages": 242,
+        "s3SafeFileName": "78559523reactnative.pdf",
+        "uploadFileName": "reactnative",
+      },
+      Object {
+        "numPages": 2,
+        "s3SafeFileName": "78559523TrainTickets.pdf",
+        "uploadFileName": "TrainTickets",
+      },
+    ]
+  }
+>
+  <Main
+    params={1}
+    previous_uploads={
+      Array [
+        Object {
+          "numPages": 2,
+          "s3SafeFileName": "78559523template.pdf",
+          "uploadFileName": "template",
+        },
+        Object {
+          "numPages": 242,
+          "s3SafeFileName": "78559523reactnative.pdf",
+          "uploadFileName": "reactnative",
+        },
+        Object {
+          "numPages": 2,
+          "s3SafeFileName": "78559523TrainTickets.pdf",
+          "uploadFileName": "TrainTickets",
+        },
+      ]
+    }
+  >
+    <div>
+      <Container
+        className="center"
+        fluid={false}
+      >
+        <div
+          className="center container"
+        >
+          <div
+            className="tight-container"
+          >
+            <div
+              className="mt2"
+            >
+              This free tool converts PDFs to JPGs. It shows thumbnails of each page so you can easily enlarge and download only the files you wish to download
+            </div>
+            <div
+              className="mt2"
+            >
+              <span
+                className="big"
+              >
+                1
+              </span>
+               Click the 'Choose File' button and select a PDF file you wish to convert. Click 'Convert to JPG images' and wait for the conversion process to finish.
+            </div>
+            <div>
+              <span
+                className="big"
+              >
+                2
+              </span>
+               Download the results either file by file or click the DOWNLOAD ALL button to get them all at once in a ZIP archive.
+            </div>
+          </div>
+        </div>
+      </Container>
+    </div>
+    <Container
+      fluid={false}
+    >
+      <div
+        className="container"
+      >
+        <input
+          accept=".pdf"
+          className="btn btn-success input-padding"
+          onChange={[Function]}
+          type="file"
+          value=""
+        />
+        <Button
+          active={false}
+          className="convert-button-padding"
+          disabled={true}
+          onClick={[Function]}
+          type="button"
+          variant="primary"
+        >
+          <button
+            className="convert-button-padding btn btn-primary"
+            disabled={true}
+            onClick={[Function]}
+            type="button"
+          >
+            Convert to JPG Images
+          </button>
+        </Button>
+      </div>
+    </Container>
+  </Main>
+</WrappedComponent>
+`;

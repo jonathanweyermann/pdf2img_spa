@@ -8,7 +8,7 @@ import awsmobile from './aws-exports';
 import { imageBucket } from './constants'
 import FileStatus from './util/FileStatus'
 import { Navbar, NavDropdown, Nav } from 'react-bootstrap';
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { Router, Switch, Route } from "react-router-dom";
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faDownload } from '@fortawesome/free-solid-svg-icons'
@@ -35,17 +35,24 @@ class App extends Component {
 
   grabPreviousUploads = () => {
     if (localStorage.getItem('previous_uploads')) {
+      debugger
       var prev_uploads = JSON.parse(localStorage.getItem('previous_uploads'))
+      console.log(prev_uploads)
+      console.log(imageBucket)
       var valid_uploads = prev_uploads.filter(this.checkPdfFileExistance);
+      console.log(`valid_uploads: ${valid_uploads}`);
       localStorage.setItem('previous_uploads', JSON.stringify(valid_uploads))
       return JSON.parse(localStorage.getItem('previous_uploads'));
     }
     else {
-      return "[]"
+      return []
     }
   }
 
   checkPdfFileExistance = (upload) => {
+    console.log(`FileStatus: ${imageBucket}pdfs/${upload.s3SafeFileName}`);
+    var fstatus = FileStatus(`${imageBucket}pdfs/${upload.s3SafeFileName}`);
+    console.log(`FileStatus2: ${fstatus}`);
     return (FileStatus(`${imageBucket}pdfs/${upload.s3SafeFileName}`)===200)
   }
 
@@ -80,7 +87,7 @@ class App extends Component {
   render() {
 
     return (
-      <BrowserRouter history={history}>
+      <Router history={history}>
         <div className="App">
           <header className="App-header">
             { this.header() }
@@ -97,7 +104,7 @@ class App extends Component {
             </Switch>
           </div>
         </div>
-      </BrowserRouter>
+      </Router>
     );
   }
 }

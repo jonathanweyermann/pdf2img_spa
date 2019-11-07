@@ -50,6 +50,7 @@ class Image extends Component {
       <ModalImage
         small={this.props.meta}
         large={this.props.meta}
+        showRotate={true}
       />
     )
   }

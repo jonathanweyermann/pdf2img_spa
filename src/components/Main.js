@@ -12,7 +12,7 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/$
 
 function withMyHook(Component) {
   return function WrappedComponent(props) {
-    const params = useParams();
+    const params = { index: 1 }//useParams();
     return <Component {...props} params={params} />;
   }
 }

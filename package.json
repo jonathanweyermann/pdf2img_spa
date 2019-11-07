@@ -11,7 +11,10 @@
     "axios": "^0.19.0",
     "bootstrap": "^4.3.1",
     "dotenv": "^8.2.0",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
     "history": "^4.10.1",
+    "jest-enzyme": "^7.1.2",
     "query-string": "^6.8.3",
     "react": "^16.10.2",
     "react-async-component": "^2.0.0",
@@ -24,6 +27,7 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
     "react-spinners": "^0.6.1",
+    "react-test-renderer": "^16.11.0",
     "use-react-router": "^1.0.7"
   },
   "scripts": {
@@ -46,5 +50,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "aws-sdk-mock": "^4.5.0",
+    "chai": "^4.2.0",
+    "sinon": "^7.5.0",
+    "xhr-mock": "^2.5.0"
   }
 }
