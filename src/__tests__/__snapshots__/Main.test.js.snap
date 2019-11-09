@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`main component tests uploads a file 1`] = `
+exports[`main component tests retrieves a previously uploaded file and shows snapshot 1`] = `
 <WrappedComponent
   previous_uploads={
     Array [
@@ -10,7 +10,7 @@ exports[`main component tests uploads a file 1`] = `
         "uploadFileName": "template",
       },
       Object {
-        "numPages": 242,
+        "numPages": 23,
         "s3SafeFileName": "78559523reactnative.pdf",
         "uploadFileName": "reactnative",
       },
@@ -23,7 +23,11 @@ exports[`main component tests uploads a file 1`] = `
   }
 >
   <Main
-    params={1}
+    params={
+      Object {
+        "index": "1",
+      }
+    }
     previous_uploads={
       Array [
         Object {
@@ -32,7 +36,7 @@ exports[`main component tests uploads a file 1`] = `
           "uploadFileName": "template",
         },
         Object {
-          "numPages": 242,
+          "numPages": 23,
           "s3SafeFileName": "78559523reactnative.pdf",
           "uploadFileName": "reactnative",
         },
@@ -45,42 +49,946 @@ exports[`main component tests uploads a file 1`] = `
     }
   >
     <div>
-      <Container
-        className="center"
-        fluid={false}
+      <PdfImages
+        data={
+          Object {
+            "analyzing": false,
+            "baseState": false,
+            "errorMessage": "",
+            "fileName": "",
+            "firstPage": 1,
+            "images": Array [
+              "./78559523reactnative/image1.jpg",
+              "./78559523reactnative/image2.jpg",
+              "./78559523reactnative/image3.jpg",
+              "./78559523reactnative/image4.jpg",
+              "./78559523reactnative/image5.jpg",
+              "./78559523reactnative/image6.jpg",
+              "./78559523reactnative/image7.jpg",
+              "./78559523reactnative/image8.jpg",
+            ],
+            "lastPage": 8,
+            "numPages": 23,
+            "s3SafeFileName": "78559523reactnative.pdf",
+            "success": true,
+            "uploadFile": "",
+            "uploadFileName": "reactnative",
+            "uploadFileType": "",
+            "uploading": false,
+          }
+        }
+        handlePageClick={[Function]}
       >
-        <div
-          className="center container"
+        <Container
+          fluid={false}
         >
           <div
-            className="tight-container"
+            className="container"
           >
-            <div
-              className="mt2"
-            >
-              This free tool converts PDFs to JPGs. It shows thumbnails of each page so you can easily enlarge and download only the files you wish to download
-            </div>
-            <div
-              className="mt2"
-            >
-              <span
-                className="big"
-              >
-                1
-              </span>
-               Click the 'Choose File' button and select a PDF file you wish to convert. Click 'Convert to JPG images' and wait for the conversion process to finish.
-            </div>
             <div>
-              <span
-                className="big"
+              <div>
+                <h6
+                  className="mt2 center"
+                >
+                  reactnative
+                  .pdf: Page 
+                  1
+                   to 
+                  8
+                   of 
+                  23
+                </h6>
+              </div>
+              <ForwardRef
+                noGutters={false}
               >
-                2
-              </span>
-               Download the results either file by file or click the DOWNLOAD ALL button to get them all at once in a ZIP archive.
+                <div
+                  className="row"
+                >
+                  <Image
+                    key="0"
+                    meta="./78559523reactnative/image1.jpg"
+                  >
+                    <Col
+                      md={3}
+                    >
+                      <div
+                        className="col-md-3"
+                      >
+                        <div
+                          className="image-background"
+                        >
+                          <_default
+                            large="./78559523reactnative/image1.jpg"
+                            showRotate={true}
+                            small="./78559523reactnative/image1.jpg"
+                          >
+                            <div>
+                              <img
+                                onClick={[Function]}
+                                src="./78559523reactnative/image1.jpg"
+                                style={
+                                  Object {
+                                    "cursor": "pointer",
+                                    "maxHeight": "100%",
+                                    "maxWidth": "100%",
+                                  }
+                                }
+                              />
+                            </div>
+                          </_default>
+                          <Button
+                            active={false}
+                            className="button-padding-less"
+                            disabled={false}
+                            href="./78559523reactnative/image1.jpg"
+                            type="button"
+                            variant="secondary"
+                          >
+                            <SafeAnchor
+                              className="button-padding-less btn btn-secondary"
+                              disabled={false}
+                              href="./78559523reactnative/image1.jpg"
+                            >
+                              <a
+                                className="button-padding-less btn btn-secondary"
+                                href="./78559523reactnative/image1.jpg"
+                                onClick={[Function]}
+                                onKeyDown={[Function]}
+                              >
+                                <FontAwesomeIcon
+                                  border={false}
+                                  className=""
+                                  fixedWidth={false}
+                                  flip={null}
+                                  icon="download"
+                                  inverse={false}
+                                  listItem={false}
+                                  mask={null}
+                                  pull={null}
+                                  pulse={false}
+                                  rotation={null}
+                                  size={null}
+                                  spin={false}
+                                  swapOpacity={false}
+                                  symbol={false}
+                                  title=""
+                                  transform={null}
+                                >
+                                  <svg
+                                    aria-hidden="true"
+                                    className="svg-inline--fa fa-download fa-w-16 "
+                                    data-icon="download"
+                                    data-prefix="fas"
+                                    focusable="false"
+                                    role="img"
+                                    style={Object {}}
+                                    viewBox="0 0 512 512"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <path
+                                      d="M216 0h80c13.3 0 24 10.7 24 24v168h87.7c17.8 0 26.7 21.5 14.1 34.1L269.7 378.3c-7.5 7.5-19.8 7.5-27.3 0L90.1 226.1c-12.6-12.6-3.7-34.1 14.1-34.1H192V24c0-13.3 10.7-24 24-24zm296 376v112c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V376c0-13.3 10.7-24 24-24h146.7l49 49c20.1 20.1 52.5 20.1 72.6 0l49-49H488c13.3 0 24 10.7 24 24zm-124 88c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20zm64 0c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20z"
+                                      fill="currentColor"
+                                      style={Object {}}
+                                    />
+                                  </svg>
+                                </FontAwesomeIcon>
+                              </a>
+                            </SafeAnchor>
+                          </Button>
+                        </div>
+                      </div>
+                    </Col>
+                  </Image>
+                  <Image
+                    key="1"
+                    meta="./78559523reactnative/image2.jpg"
+                  >
+                    <Col
+                      md={3}
+                    >
+                      <div
+                        className="col-md-3"
+                      >
+                        <div
+                          className="image-background"
+                        >
+                          <_default
+                            large="./78559523reactnative/image2.jpg"
+                            showRotate={true}
+                            small="./78559523reactnative/image2.jpg"
+                          >
+                            <div>
+                              <img
+                                onClick={[Function]}
+                                src="./78559523reactnative/image2.jpg"
+                                style={
+                                  Object {
+                                    "cursor": "pointer",
+                                    "maxHeight": "100%",
+                                    "maxWidth": "100%",
+                                  }
+                                }
+                              />
+                            </div>
+                          </_default>
+                          <Button
+                            active={false}
+                            className="button-padding-less"
+                            disabled={false}
+                            href="./78559523reactnative/image2.jpg"
+                            type="button"
+                            variant="secondary"
+                          >
+                            <SafeAnchor
+                              className="button-padding-less btn btn-secondary"
+                              disabled={false}
+                              href="./78559523reactnative/image2.jpg"
+                            >
+                              <a
+                                className="button-padding-less btn btn-secondary"
+                                href="./78559523reactnative/image2.jpg"
+                                onClick={[Function]}
+                                onKeyDown={[Function]}
+                              >
+                                <FontAwesomeIcon
+                                  border={false}
+                                  className=""
+                                  fixedWidth={false}
+                                  flip={null}
+                                  icon="download"
+                                  inverse={false}
+                                  listItem={false}
+                                  mask={null}
+                                  pull={null}
+                                  pulse={false}
+                                  rotation={null}
+                                  size={null}
+                                  spin={false}
+                                  swapOpacity={false}
+                                  symbol={false}
+                                  title=""
+                                  transform={null}
+                                >
+                                  <svg
+                                    aria-hidden="true"
+                                    className="svg-inline--fa fa-download fa-w-16 "
+                                    data-icon="download"
+                                    data-prefix="fas"
+                                    focusable="false"
+                                    role="img"
+                                    style={Object {}}
+                                    viewBox="0 0 512 512"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <path
+                                      d="M216 0h80c13.3 0 24 10.7 24 24v168h87.7c17.8 0 26.7 21.5 14.1 34.1L269.7 378.3c-7.5 7.5-19.8 7.5-27.3 0L90.1 226.1c-12.6-12.6-3.7-34.1 14.1-34.1H192V24c0-13.3 10.7-24 24-24zm296 376v112c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V376c0-13.3 10.7-24 24-24h146.7l49 49c20.1 20.1 52.5 20.1 72.6 0l49-49H488c13.3 0 24 10.7 24 24zm-124 88c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20zm64 0c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20z"
+                                      fill="currentColor"
+                                      style={Object {}}
+                                    />
+                                  </svg>
+                                </FontAwesomeIcon>
+                              </a>
+                            </SafeAnchor>
+                          </Button>
+                        </div>
+                      </div>
+                    </Col>
+                  </Image>
+                  <Image
+                    key="2"
+                    meta="./78559523reactnative/image3.jpg"
+                  >
+                    <Col
+                      md={3}
+                    >
+                      <div
+                        className="col-md-3"
+                      >
+                        <div
+                          className="image-background"
+                        >
+                          <_default
+                            large="./78559523reactnative/image3.jpg"
+                            showRotate={true}
+                            small="./78559523reactnative/image3.jpg"
+                          >
+                            <div>
+                              <img
+                                onClick={[Function]}
+                                src="./78559523reactnative/image3.jpg"
+                                style={
+                                  Object {
+                                    "cursor": "pointer",
+                                    "maxHeight": "100%",
+                                    "maxWidth": "100%",
+                                  }
+                                }
+                              />
+                            </div>
+                          </_default>
+                          <Button
+                            active={false}
+                            className="button-padding-less"
+                            disabled={false}
+                            href="./78559523reactnative/image3.jpg"
+                            type="button"
+                            variant="secondary"
+                          >
+                            <SafeAnchor
+                              className="button-padding-less btn btn-secondary"
+                              disabled={false}
+                              href="./78559523reactnative/image3.jpg"
+                            >
+                              <a
+                                className="button-padding-less btn btn-secondary"
+                                href="./78559523reactnative/image3.jpg"
+                                onClick={[Function]}
+                                onKeyDown={[Function]}
+                              >
+                                <FontAwesomeIcon
+                                  border={false}
+                                  className=""
+                                  fixedWidth={false}
+                                  flip={null}
+                                  icon="download"
+                                  inverse={false}
+                                  listItem={false}
+                                  mask={null}
+                                  pull={null}
+                                  pulse={false}
+                                  rotation={null}
+                                  size={null}
+                                  spin={false}
+                                  swapOpacity={false}
+                                  symbol={false}
+                                  title=""
+                                  transform={null}
+                                >
+                                  <svg
+                                    aria-hidden="true"
+                                    className="svg-inline--fa fa-download fa-w-16 "
+                                    data-icon="download"
+                                    data-prefix="fas"
+                                    focusable="false"
+                                    role="img"
+                                    style={Object {}}
+                                    viewBox="0 0 512 512"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <path
+                                      d="M216 0h80c13.3 0 24 10.7 24 24v168h87.7c17.8 0 26.7 21.5 14.1 34.1L269.7 378.3c-7.5 7.5-19.8 7.5-27.3 0L90.1 226.1c-12.6-12.6-3.7-34.1 14.1-34.1H192V24c0-13.3 10.7-24 24-24zm296 376v112c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V376c0-13.3 10.7-24 24-24h146.7l49 49c20.1 20.1 52.5 20.1 72.6 0l49-49H488c13.3 0 24 10.7 24 24zm-124 88c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20zm64 0c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20z"
+                                      fill="currentColor"
+                                      style={Object {}}
+                                    />
+                                  </svg>
+                                </FontAwesomeIcon>
+                              </a>
+                            </SafeAnchor>
+                          </Button>
+                        </div>
+                      </div>
+                    </Col>
+                  </Image>
+                  <Image
+                    key="3"
+                    meta="./78559523reactnative/image4.jpg"
+                  >
+                    <Col
+                      md={3}
+                    >
+                      <div
+                        className="col-md-3"
+                      >
+                        <div
+                          className="image-background"
+                        >
+                          <_default
+                            large="./78559523reactnative/image4.jpg"
+                            showRotate={true}
+                            small="./78559523reactnative/image4.jpg"
+                          >
+                            <div>
+                              <img
+                                onClick={[Function]}
+                                src="./78559523reactnative/image4.jpg"
+                                style={
+                                  Object {
+                                    "cursor": "pointer",
+                                    "maxHeight": "100%",
+                                    "maxWidth": "100%",
+                                  }
+                                }
+                              />
+                            </div>
+                          </_default>
+                          <Button
+                            active={false}
+                            className="button-padding-less"
+                            disabled={false}
+                            href="./78559523reactnative/image4.jpg"
+                            type="button"
+                            variant="secondary"
+                          >
+                            <SafeAnchor
+                              className="button-padding-less btn btn-secondary"
+                              disabled={false}
+                              href="./78559523reactnative/image4.jpg"
+                            >
+                              <a
+                                className="button-padding-less btn btn-secondary"
+                                href="./78559523reactnative/image4.jpg"
+                                onClick={[Function]}
+                                onKeyDown={[Function]}
+                              >
+                                <FontAwesomeIcon
+                                  border={false}
+                                  className=""
+                                  fixedWidth={false}
+                                  flip={null}
+                                  icon="download"
+                                  inverse={false}
+                                  listItem={false}
+                                  mask={null}
+                                  pull={null}
+                                  pulse={false}
+                                  rotation={null}
+                                  size={null}
+                                  spin={false}
+                                  swapOpacity={false}
+                                  symbol={false}
+                                  title=""
+                                  transform={null}
+                                >
+                                  <svg
+                                    aria-hidden="true"
+                                    className="svg-inline--fa fa-download fa-w-16 "
+                                    data-icon="download"
+                                    data-prefix="fas"
+                                    focusable="false"
+                                    role="img"
+                                    style={Object {}}
+                                    viewBox="0 0 512 512"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <path
+                                      d="M216 0h80c13.3 0 24 10.7 24 24v168h87.7c17.8 0 26.7 21.5 14.1 34.1L269.7 378.3c-7.5 7.5-19.8 7.5-27.3 0L90.1 226.1c-12.6-12.6-3.7-34.1 14.1-34.1H192V24c0-13.3 10.7-24 24-24zm296 376v112c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V376c0-13.3 10.7-24 24-24h146.7l49 49c20.1 20.1 52.5 20.1 72.6 0l49-49H488c13.3 0 24 10.7 24 24zm-124 88c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20zm64 0c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20z"
+                                      fill="currentColor"
+                                      style={Object {}}
+                                    />
+                                  </svg>
+                                </FontAwesomeIcon>
+                              </a>
+                            </SafeAnchor>
+                          </Button>
+                        </div>
+                      </div>
+                    </Col>
+                  </Image>
+                  <Image
+                    key="4"
+                    meta="./78559523reactnative/image5.jpg"
+                  >
+                    <Col
+                      md={3}
+                    >
+                      <div
+                        className="col-md-3"
+                      >
+                        <div
+                          className="image-background"
+                        >
+                          <_default
+                            large="./78559523reactnative/image5.jpg"
+                            showRotate={true}
+                            small="./78559523reactnative/image5.jpg"
+                          >
+                            <div>
+                              <img
+                                onClick={[Function]}
+                                src="./78559523reactnative/image5.jpg"
+                                style={
+                                  Object {
+                                    "cursor": "pointer",
+                                    "maxHeight": "100%",
+                                    "maxWidth": "100%",
+                                  }
+                                }
+                              />
+                            </div>
+                          </_default>
+                          <Button
+                            active={false}
+                            className="button-padding-less"
+                            disabled={false}
+                            href="./78559523reactnative/image5.jpg"
+                            type="button"
+                            variant="secondary"
+                          >
+                            <SafeAnchor
+                              className="button-padding-less btn btn-secondary"
+                              disabled={false}
+                              href="./78559523reactnative/image5.jpg"
+                            >
+                              <a
+                                className="button-padding-less btn btn-secondary"
+                                href="./78559523reactnative/image5.jpg"
+                                onClick={[Function]}
+                                onKeyDown={[Function]}
+                              >
+                                <FontAwesomeIcon
+                                  border={false}
+                                  className=""
+                                  fixedWidth={false}
+                                  flip={null}
+                                  icon="download"
+                                  inverse={false}
+                                  listItem={false}
+                                  mask={null}
+                                  pull={null}
+                                  pulse={false}
+                                  rotation={null}
+                                  size={null}
+                                  spin={false}
+                                  swapOpacity={false}
+                                  symbol={false}
+                                  title=""
+                                  transform={null}
+                                >
+                                  <svg
+                                    aria-hidden="true"
+                                    className="svg-inline--fa fa-download fa-w-16 "
+                                    data-icon="download"
+                                    data-prefix="fas"
+                                    focusable="false"
+                                    role="img"
+                                    style={Object {}}
+                                    viewBox="0 0 512 512"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <path
+                                      d="M216 0h80c13.3 0 24 10.7 24 24v168h87.7c17.8 0 26.7 21.5 14.1 34.1L269.7 378.3c-7.5 7.5-19.8 7.5-27.3 0L90.1 226.1c-12.6-12.6-3.7-34.1 14.1-34.1H192V24c0-13.3 10.7-24 24-24zm296 376v112c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V376c0-13.3 10.7-24 24-24h146.7l49 49c20.1 20.1 52.5 20.1 72.6 0l49-49H488c13.3 0 24 10.7 24 24zm-124 88c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20zm64 0c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20z"
+                                      fill="currentColor"
+                                      style={Object {}}
+                                    />
+                                  </svg>
+                                </FontAwesomeIcon>
+                              </a>
+                            </SafeAnchor>
+                          </Button>
+                        </div>
+                      </div>
+                    </Col>
+                  </Image>
+                  <Image
+                    key="5"
+                    meta="./78559523reactnative/image6.jpg"
+                  >
+                    <Col
+                      md={3}
+                    >
+                      <div
+                        className="col-md-3"
+                      >
+                        <div
+                          className="image-background"
+                        >
+                          <_default
+                            large="./78559523reactnative/image6.jpg"
+                            showRotate={true}
+                            small="./78559523reactnative/image6.jpg"
+                          >
+                            <div>
+                              <img
+                                onClick={[Function]}
+                                src="./78559523reactnative/image6.jpg"
+                                style={
+                                  Object {
+                                    "cursor": "pointer",
+                                    "maxHeight": "100%",
+                                    "maxWidth": "100%",
+                                  }
+                                }
+                              />
+                            </div>
+                          </_default>
+                          <Button
+                            active={false}
+                            className="button-padding-less"
+                            disabled={false}
+                            href="./78559523reactnative/image6.jpg"
+                            type="button"
+                            variant="secondary"
+                          >
+                            <SafeAnchor
+                              className="button-padding-less btn btn-secondary"
+                              disabled={false}
+                              href="./78559523reactnative/image6.jpg"
+                            >
+                              <a
+                                className="button-padding-less btn btn-secondary"
+                                href="./78559523reactnative/image6.jpg"
+                                onClick={[Function]}
+                                onKeyDown={[Function]}
+                              >
+                                <FontAwesomeIcon
+                                  border={false}
+                                  className=""
+                                  fixedWidth={false}
+                                  flip={null}
+                                  icon="download"
+                                  inverse={false}
+                                  listItem={false}
+                                  mask={null}
+                                  pull={null}
+                                  pulse={false}
+                                  rotation={null}
+                                  size={null}
+                                  spin={false}
+                                  swapOpacity={false}
+                                  symbol={false}
+                                  title=""
+                                  transform={null}
+                                >
+                                  <svg
+                                    aria-hidden="true"
+                                    className="svg-inline--fa fa-download fa-w-16 "
+                                    data-icon="download"
+                                    data-prefix="fas"
+                                    focusable="false"
+                                    role="img"
+                                    style={Object {}}
+                                    viewBox="0 0 512 512"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <path
+                                      d="M216 0h80c13.3 0 24 10.7 24 24v168h87.7c17.8 0 26.7 21.5 14.1 34.1L269.7 378.3c-7.5 7.5-19.8 7.5-27.3 0L90.1 226.1c-12.6-12.6-3.7-34.1 14.1-34.1H192V24c0-13.3 10.7-24 24-24zm296 376v112c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V376c0-13.3 10.7-24 24-24h146.7l49 49c20.1 20.1 52.5 20.1 72.6 0l49-49H488c13.3 0 24 10.7 24 24zm-124 88c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20zm64 0c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20z"
+                                      fill="currentColor"
+                                      style={Object {}}
+                                    />
+                                  </svg>
+                                </FontAwesomeIcon>
+                              </a>
+                            </SafeAnchor>
+                          </Button>
+                        </div>
+                      </div>
+                    </Col>
+                  </Image>
+                  <Image
+                    key="6"
+                    meta="./78559523reactnative/image7.jpg"
+                  >
+                    <Col
+                      md={3}
+                    >
+                      <div
+                        className="col-md-3"
+                      >
+                        <div
+                          className="image-background"
+                        >
+                          <_default
+                            large="./78559523reactnative/image7.jpg"
+                            showRotate={true}
+                            small="./78559523reactnative/image7.jpg"
+                          >
+                            <div>
+                              <img
+                                onClick={[Function]}
+                                src="./78559523reactnative/image7.jpg"
+                                style={
+                                  Object {
+                                    "cursor": "pointer",
+                                    "maxHeight": "100%",
+                                    "maxWidth": "100%",
+                                  }
+                                }
+                              />
+                            </div>
+                          </_default>
+                          <Button
+                            active={false}
+                            className="button-padding-less"
+                            disabled={false}
+                            href="./78559523reactnative/image7.jpg"
+                            type="button"
+                            variant="secondary"
+                          >
+                            <SafeAnchor
+                              className="button-padding-less btn btn-secondary"
+                              disabled={false}
+                              href="./78559523reactnative/image7.jpg"
+                            >
+                              <a
+                                className="button-padding-less btn btn-secondary"
+                                href="./78559523reactnative/image7.jpg"
+                                onClick={[Function]}
+                                onKeyDown={[Function]}
+                              >
+                                <FontAwesomeIcon
+                                  border={false}
+                                  className=""
+                                  fixedWidth={false}
+                                  flip={null}
+                                  icon="download"
+                                  inverse={false}
+                                  listItem={false}
+                                  mask={null}
+                                  pull={null}
+                                  pulse={false}
+                                  rotation={null}
+                                  size={null}
+                                  spin={false}
+                                  swapOpacity={false}
+                                  symbol={false}
+                                  title=""
+                                  transform={null}
+                                >
+                                  <svg
+                                    aria-hidden="true"
+                                    className="svg-inline--fa fa-download fa-w-16 "
+                                    data-icon="download"
+                                    data-prefix="fas"
+                                    focusable="false"
+                                    role="img"
+                                    style={Object {}}
+                                    viewBox="0 0 512 512"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <path
+                                      d="M216 0h80c13.3 0 24 10.7 24 24v168h87.7c17.8 0 26.7 21.5 14.1 34.1L269.7 378.3c-7.5 7.5-19.8 7.5-27.3 0L90.1 226.1c-12.6-12.6-3.7-34.1 14.1-34.1H192V24c0-13.3 10.7-24 24-24zm296 376v112c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V376c0-13.3 10.7-24 24-24h146.7l49 49c20.1 20.1 52.5 20.1 72.6 0l49-49H488c13.3 0 24 10.7 24 24zm-124 88c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20zm64 0c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20z"
+                                      fill="currentColor"
+                                      style={Object {}}
+                                    />
+                                  </svg>
+                                </FontAwesomeIcon>
+                              </a>
+                            </SafeAnchor>
+                          </Button>
+                        </div>
+                      </div>
+                    </Col>
+                  </Image>
+                  <Image
+                    key="7"
+                    meta="./78559523reactnative/image8.jpg"
+                  >
+                    <Col
+                      md={3}
+                    >
+                      <div
+                        className="col-md-3"
+                      >
+                        <div
+                          className="image-background"
+                        >
+                          <_default
+                            large="./78559523reactnative/image8.jpg"
+                            showRotate={true}
+                            small="./78559523reactnative/image8.jpg"
+                          >
+                            <div>
+                              <img
+                                onClick={[Function]}
+                                src="./78559523reactnative/image8.jpg"
+                                style={
+                                  Object {
+                                    "cursor": "pointer",
+                                    "maxHeight": "100%",
+                                    "maxWidth": "100%",
+                                  }
+                                }
+                              />
+                            </div>
+                          </_default>
+                          <Button
+                            active={false}
+                            className="button-padding-less"
+                            disabled={false}
+                            href="./78559523reactnative/image8.jpg"
+                            type="button"
+                            variant="secondary"
+                          >
+                            <SafeAnchor
+                              className="button-padding-less btn btn-secondary"
+                              disabled={false}
+                              href="./78559523reactnative/image8.jpg"
+                            >
+                              <a
+                                className="button-padding-less btn btn-secondary"
+                                href="./78559523reactnative/image8.jpg"
+                                onClick={[Function]}
+                                onKeyDown={[Function]}
+                              >
+                                <FontAwesomeIcon
+                                  border={false}
+                                  className=""
+                                  fixedWidth={false}
+                                  flip={null}
+                                  icon="download"
+                                  inverse={false}
+                                  listItem={false}
+                                  mask={null}
+                                  pull={null}
+                                  pulse={false}
+                                  rotation={null}
+                                  size={null}
+                                  spin={false}
+                                  swapOpacity={false}
+                                  symbol={false}
+                                  title=""
+                                  transform={null}
+                                >
+                                  <svg
+                                    aria-hidden="true"
+                                    className="svg-inline--fa fa-download fa-w-16 "
+                                    data-icon="download"
+                                    data-prefix="fas"
+                                    focusable="false"
+                                    role="img"
+                                    style={Object {}}
+                                    viewBox="0 0 512 512"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <path
+                                      d="M216 0h80c13.3 0 24 10.7 24 24v168h87.7c17.8 0 26.7 21.5 14.1 34.1L269.7 378.3c-7.5 7.5-19.8 7.5-27.3 0L90.1 226.1c-12.6-12.6-3.7-34.1 14.1-34.1H192V24c0-13.3 10.7-24 24-24zm296 376v112c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V376c0-13.3 10.7-24 24-24h146.7l49 49c20.1 20.1 52.5 20.1 72.6 0l49-49H488c13.3 0 24 10.7 24 24zm-124 88c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20zm64 0c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20z"
+                                      fill="currentColor"
+                                      style={Object {}}
+                                    />
+                                  </svg>
+                                </FontAwesomeIcon>
+                              </a>
+                            </SafeAnchor>
+                          </Button>
+                        </div>
+                      </div>
+                    </Col>
+                  </Image>
+                </div>
+              </ForwardRef>
+              <ForwardRef
+                noGutters={false}
+              >
+                <div
+                  className="row"
+                >
+                  <PaginationBoxView
+                    activeClassName="active"
+                    breakClassName="break-me"
+                    breakLabel="..."
+                    containerClassName="pagination"
+                    disableInitialCallback={false}
+                    disabledClassName="disabled"
+                    marginPagesDisplayed={2}
+                    nextClassName="next"
+                    nextLabel="next"
+                    onPageChange={[Function]}
+                    pageCount={2.875}
+                    pageRangeDisplayed={8}
+                    previousClassName="previous"
+                    previousLabel="previous"
+                    subContainerClassName="pages"
+                  >
+                    <ul
+                      className="pagination"
+                    >
+                      <li
+                        className="previous disabled"
+                      >
+                        <a
+                          aria-disabled="true"
+                          onClick={[Function]}
+                          onKeyPress={[Function]}
+                          role="button"
+                          tabIndex="0"
+                        >
+                          previous
+                        </a>
+                      </li>
+                      <PageView
+                        activeClassName="active"
+                        key="0"
+                        onClick={[Function]}
+                        page={1}
+                        selected={true}
+                      >
+                        <li
+                          className="active"
+                        >
+                          <a
+                            aria-current="page"
+                            aria-label="Page 1 is your current page"
+                            onClick={[Function]}
+                            onKeyPress={[Function]}
+                            role="button"
+                            tabIndex="0"
+                          >
+                            1
+                          </a>
+                        </li>
+                      </PageView>
+                      <PageView
+                        activeClassName="active"
+                        key="1"
+                        onClick={[Function]}
+                        page={2}
+                        selected={false}
+                      >
+                        <li>
+                          <a
+                            aria-current={null}
+                            aria-label="Page 2"
+                            onClick={[Function]}
+                            onKeyPress={[Function]}
+                            role="button"
+                            tabIndex="0"
+                          >
+                            2
+                          </a>
+                        </li>
+                      </PageView>
+                      <PageView
+                        activeClassName="active"
+                        key="2"
+                        onClick={[Function]}
+                        page={3}
+                        selected={false}
+                      >
+                        <li>
+                          <a
+                            aria-current={null}
+                            aria-label="Page 3"
+                            onClick={[Function]}
+                            onKeyPress={[Function]}
+                            role="button"
+                            tabIndex="0"
+                          >
+                            3
+                          </a>
+                        </li>
+                      </PageView>
+                      <li
+                        className="next"
+                      >
+                        <a
+                          aria-disabled="false"
+                          onClick={[Function]}
+                          onKeyPress={[Function]}
+                          role="button"
+                          tabIndex="0"
+                        >
+                          next
+                        </a>
+                      </li>
+                    </ul>
+                  </PaginationBoxView>
+                </div>
+              </ForwardRef>
             </div>
           </div>
-        </div>
-      </Container>
+        </Container>
+      </PdfImages>
     </div>
     <Container
       fluid={false}
@@ -88,6 +996,141 @@ exports[`main component tests uploads a file 1`] = `
       <div
         className="container"
       >
+        <Zip
+          addToPreviousUploads={[Function]}
+          fileName="./78559523reactnative.zip"
+        >
+          <Button
+            active={false}
+            className="button-padding"
+            disabled={false}
+            type="button"
+            variant="secondary"
+          >
+            <button
+              className="button-padding btn btn-secondary"
+              disabled={false}
+              type="button"
+            >
+              Creating your zip file..
+              <Loader
+                color="#123abc"
+                css={Object {}}
+                loading={true}
+                margin="2px"
+                size={25}
+                sizeUnit="px"
+              >
+                <EmotionCssPropInternal
+                  __EMOTION_TYPE_PLEASE_DO_NOT_USE__="div"
+                  css={
+                    Array [
+                      Object {},
+                    ]
+                  }
+                >
+                  <div
+                    className="css-0"
+                  >
+                    <EmotionCssPropInternal
+                      __EMOTION_TYPE_PLEASE_DO_NOT_USE__="div"
+                      css={
+                        Object {
+                          "map": undefined,
+                          "name": "17i9zmi",
+                          "next": Object {
+                            "name": "animation-1bzpvkt",
+                            "next": undefined,
+                            "styles": "@keyframes animation-1bzpvkt{
+  50% {transform: scale(0.75);opacity: 0.2}
+  100% {transform: scale(1);opacity: 1}
+}",
+                          },
+                          "styles": "
+      display: inline-block;
+      background-color: #123abc;
+      width: 25px;
+      height: 25px;
+      margin: 2px;
+      border-radius: 100%;
+      animation: animation-1bzpvkt 0.7s 0s infinite linear;
+      animation-fill-mode: both;
+    ",
+                        }
+                      }
+                    >
+                      <div
+                        className="css-17i9zmi"
+                      />
+                    </EmotionCssPropInternal>
+                    <EmotionCssPropInternal
+                      __EMOTION_TYPE_PLEASE_DO_NOT_USE__="div"
+                      css={
+                        Object {
+                          "map": undefined,
+                          "name": "1w2ypoy",
+                          "next": Object {
+                            "name": "animation-1bzpvkt",
+                            "next": undefined,
+                            "styles": "@keyframes animation-1bzpvkt{
+  50% {transform: scale(0.75);opacity: 0.2}
+  100% {transform: scale(1);opacity: 1}
+}",
+                          },
+                          "styles": "
+      display: inline-block;
+      background-color: #123abc;
+      width: 25px;
+      height: 25px;
+      margin: 2px;
+      border-radius: 100%;
+      animation: animation-1bzpvkt 0.7s 0.35s infinite linear;
+      animation-fill-mode: both;
+    ",
+                        }
+                      }
+                    >
+                      <div
+                        className="css-1w2ypoy"
+                      />
+                    </EmotionCssPropInternal>
+                    <EmotionCssPropInternal
+                      __EMOTION_TYPE_PLEASE_DO_NOT_USE__="div"
+                      css={
+                        Object {
+                          "map": undefined,
+                          "name": "17i9zmi",
+                          "next": Object {
+                            "name": "animation-1bzpvkt",
+                            "next": undefined,
+                            "styles": "@keyframes animation-1bzpvkt{
+  50% {transform: scale(0.75);opacity: 0.2}
+  100% {transform: scale(1);opacity: 1}
+}",
+                          },
+                          "styles": "
+      display: inline-block;
+      background-color: #123abc;
+      width: 25px;
+      height: 25px;
+      margin: 2px;
+      border-radius: 100%;
+      animation: animation-1bzpvkt 0.7s 0s infinite linear;
+      animation-fill-mode: both;
+    ",
+                        }
+                      }
+                    >
+                      <div
+                        className="css-17i9zmi"
+                      />
+                    </EmotionCssPropInternal>
+                  </div>
+                </EmotionCssPropInternal>
+              </Loader>
+            </button>
+          </Button>
+        </Zip>
         <input
           accept=".pdf"
           className="btn btn-success input-padding"
@@ -117,3 +1160,5 @@ exports[`main component tests uploads a file 1`] = `
   </Main>
 </WrappedComponent>
 `;
+
+exports[`main component tests uploads a file 1`] = `null`;

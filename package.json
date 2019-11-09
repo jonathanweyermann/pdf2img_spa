@@ -33,7 +33,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --verbose --coverage  --watchAll",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -54,6 +54,7 @@
   "devDependencies": {
     "aws-sdk-mock": "^4.5.0",
     "chai": "^4.2.0",
+    "react-testing-library": "^8.0.1",
     "sinon": "^7.5.0",
     "xhr-mock": "^2.5.0"
   }

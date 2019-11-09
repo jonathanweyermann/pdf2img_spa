@@ -37,10 +37,7 @@ class App extends Component {
     if (localStorage.getItem('previous_uploads')) {
       debugger
       var prev_uploads = JSON.parse(localStorage.getItem('previous_uploads'))
-      console.log(prev_uploads)
-      console.log(imageBucket)
       var valid_uploads = prev_uploads.filter(this.checkPdfFileExistance);
-      console.log(`valid_uploads: ${valid_uploads}`);
       localStorage.setItem('previous_uploads', JSON.stringify(valid_uploads))
       return JSON.parse(localStorage.getItem('previous_uploads'));
     }
@@ -50,9 +47,7 @@ class App extends Component {
   }
 
   checkPdfFileExistance = (upload) => {
-    console.log(`FileStatus: ${imageBucket}pdfs/${upload.s3SafeFileName}`);
     var fstatus = FileStatus(`${imageBucket}pdfs/${upload.s3SafeFileName}`);
-    console.log(`FileStatus2: ${fstatus}`);
     return (FileStatus(`${imageBucket}pdfs/${upload.s3SafeFileName}`)===200)
   }
 
@@ -83,9 +78,7 @@ class App extends Component {
     history.push(`/uploaded/${index}`);
   }
 
-
   render() {
-
     return (
       <Router history={history}>
         <div className="App">
@@ -95,10 +88,10 @@ class App extends Component {
           <div>
             <Switch>
               <Route path="/about" component={About} />
-              <Route path="/uploaded/:index" component={Main}>
+              <Route path="/uploaded/:index">
                 <Main previous_uploads={this.state.previous_uploads} previous_uploads_update={this.previous_uploads_update} />
               </Route>
-              <Route path="/" component={Main}>
+              <Route path="/">
                 <Main previous_uploads={this.state.previous_uploads} previous_uploads_update={this.previous_uploads_update} />
               </Route>
             </Switch>

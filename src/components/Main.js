@@ -12,7 +12,9 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/$
 
 function withMyHook(Component) {
   return function WrappedComponent(props) {
-    const params = { index: 1 }//useParams();
+    const params = useParams();
+    //console.log(`params: ${JSON.stringify(params)}`);
+    //console.log(`props: ${JSON.stringify(props)}`);
     return <Component {...props} params={params} />;
   }
 }
@@ -58,7 +60,6 @@ class Main extends Component {
     const { previous_uploads, params } = this.props;
 
     if ( previous_uploads.length > 0 && this.props.params.index !== undefined) {
-      console.log(previous_uploads)
       let { uploadFileName, numPages, s3SafeFileName} = previous_uploads[params.index];
       var imgs = [];
       for(var index=1;index <= Math.min(pagesToDisplay,numPages) ;index++){
@@ -130,7 +131,6 @@ class Main extends Component {
       this.saveLocal('previous_uploads', JSON.stringify(prev_uploads))
     }
     this.props.previous_uploads_update(found)
-    //this.setState({success: true})
   }
 
   saveLocal = (id,prev_uploads) => {
@@ -139,7 +139,7 @@ class Main extends Component {
 
   errorMessage = () => {
     return (
-      <div class="error-message">{this.state.errorMessage}</div>
+      <div className="error-message">{this.state.errorMessage}</div>
     )
   }
 
