@@ -1,15 +1,15 @@
 {
     "paths": [
         {
-            "name": "/productionpdfs",
+            "name": "/prodpdf",
             "lambdaFunction": "productionpdf",
             "privacy": {
                 "open": true
             }
         }
     ],
-    "resourceName": "pdf",
-    "apiName": "pdf",
+    "resourceName": "prodpdf",
+    "apiName": "prodpdf",
     "functionArns": [
         {
             "lambdaFunction": "productionpdf"
@@ -30,6 +30,5 @@
                 "Arn"
             ]
         }
-    ],
-    "uuid": "0cb9f9c8"
+    ]
 }

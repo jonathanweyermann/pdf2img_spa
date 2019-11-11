@@ -42,16 +42,16 @@
     "Resources": {
 
 
-      "pdf": {
+      "prodpdf": {
         "Type": "AWS::ApiGateway::RestApi",
         "Properties": {
           "Description": "",
-          "Name": "pdf",
+          "Name": "prodpdf",
           "Body": {
             "swagger": "2.0",
             "info": {
               "version": "2018-05-24T17:52:00Z",
-              "title": "pdf"
+              "title": "prodpdf"
             },
             "host": {
                 "Fn::Join": [
@@ -87,7 +87,7 @@
             ],
             "paths": {
 
-              "/productionpdfs": {
+              "/prodpdf": {
                 "options": {
                   "consumes": [
                     "application/json"
@@ -118,7 +118,7 @@
                         "responseParameters": {
                           "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'",
                           "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
-                          "method.response.header.Access-Control-Allow-Origin": "'http://pdf2imgspa-20191017120506-hostingbucket-dev.s3-website-us-west-2.amazonaws.com'"
+                          "method.response.header.Access-Control-Allow-Origin": "'http://pdf2imgspa-20191017120506-hostingbucket-production.s3-website-us-west-2.amazonaws.com'"
                         }
                       }
                     },
@@ -186,7 +186,7 @@
                   }
                 }
               },
-              "/productionpdfs/{proxy+}": {
+              "/prodpdf/{proxy+}": {
                 "options": {
                   "consumes": [
                     "application/json"
@@ -217,7 +217,7 @@
                         "responseParameters": {
                           "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'",
                           "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
-                          "method.response.header.Access-Control-Allow-Origin": "'http://pdf2imgspa-20191017120506-hostingbucket-dev.s3-website-us-west-2.amazonaws.com'"
+                          "method.response.header.Access-Control-Allow-Origin": "'http://pdf2imgspa-20191017120506-hostingbucket-production.s3-website-us-west-2.amazonaws.com'"
                         }
                       }
                     },
@@ -329,7 +329,7 @@
 
 
 
-        "functionproductionpdfPermissionpdf": {
+        "functionproductionpdfPermissionprodpdf": {
             "Type": "AWS::Lambda::Permission",
             "Properties": {
                 "FunctionName":
@@ -353,7 +353,7 @@
                             },
                             ":",
                             {
-                                "Ref": "pdf"
+                                "Ref": "prodpdf"
                             },
                             "/*/*/*"
                         ]
@@ -364,7 +364,7 @@
 
 
 
-      "DeploymentAPIGWpdf0cb9f9c8": {
+      "DeploymentAPIGWprodpdf": {
         "Type": "AWS::ApiGateway::Deployment",
         "Properties": {
           "Description": "The Development stage deployment of your API.",
@@ -378,7 +378,7 @@
             ]
           },
           "RestApiId": {
-            "Ref": "pdf"
+            "Ref": "prodpdf"
           }
         }
       }
@@ -386,11 +386,11 @@
     "Outputs": {
         "RootUrl": {
             "Description": "Root URL of the API gateway",
-            "Value": {"Fn::Join": ["", ["https://", {"Ref": "pdf"}, ".execute-api.", {"Ref": "AWS::Region"}, ".amazonaws.com/", {"Fn::If": ["ShouldNotCreateEnvResources","Prod", {"Ref": "env"} ]}]]}
+            "Value": {"Fn::Join": ["", ["https://", {"Ref": "prodpdf"}, ".execute-api.", {"Ref": "AWS::Region"}, ".amazonaws.com/", {"Fn::If": ["ShouldNotCreateEnvResources","Prod", {"Ref": "env"} ]}]]}
         },
         "ApiName": {
           "Description": "API Friendly name",
-          "Value": "pdf"
+          "Value": "prodpdf"
         }
     }
   }

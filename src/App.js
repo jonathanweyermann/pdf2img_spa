@@ -14,6 +14,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { faDownload } from '@fortawesome/free-solid-svg-icons'
 import { createBrowserHistory } from 'history';
 library.add(faDownload)
+require('dotenv').config()
 
 Amplify.configure(awsmobile);
 
@@ -47,7 +48,6 @@ class App extends Component {
   }
 
   checkPdfFileExistance = (upload) => {
-    var fstatus = FileStatus(`${imageBucket}pdfs/${upload.s3SafeFileName}`);
     return (FileStatus(`${imageBucket}pdfs/${upload.s3SafeFileName}`)===200)
   }
 

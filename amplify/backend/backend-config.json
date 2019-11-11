@@ -18,6 +18,11 @@
 			"service": "Lambda",
 			"providerPlugin": "awscloudformation",
 			"build": true
+		},
+		"productionpdf": {
+			"service": "Lambda",
+			"providerPlugin": "awscloudformation",
+			"build": true
 		}
 	},
 	"api": {
@@ -27,7 +32,21 @@
 			"dependsOn": [
 				{
 					"category": "function",
-					"resourceName": "pdfupload",
+					"resourceName": "productionpdf",
+					"attributes": [
+						"Name",
+						"Arn"
+					]
+				}
+			]
+		},
+		"prodpdf": {
+			"service": "API Gateway",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [
+				{
+					"category": "function",
+					"resourceName": "productionpdf",
 					"attributes": [
 						"Name",
 						"Arn"
