@@ -15,7 +15,8 @@
                 "pdf2imgspa6d0bf1fe": {}
             },
             "function": {
-                "pdfupload": {}
+                "pdfupload": {},
+                "productionpdf": {}
             }
         }
     },
@@ -35,7 +36,8 @@
                 "pdf2imgspa6d0bf1fe": {}
             },
             "function": {
-                "pdfupload": {}
+                "pdfupload": {},
+                "productionpdf": {}
             }
         }
     }

@@ -18,8 +18,8 @@
     "privacy": {
         "auth": 0,
         "unauth": 0,
-        "authRoleName": "pdf2imgspa-dev-20191017120304-authRole",
-        "unAuthRoleName": "pdf2imgspa-dev-20191017120304-unauthRole"
+        "authRoleName": "pdf2imgspa-production-20191109150505-authRole",
+        "unAuthRoleName": "pdf2imgspa-production-20191109150505-unauthRole"
     },
     "dependsOn": [
         {
@@ -30,5 +30,6 @@
                 "Arn"
             ]
         }
-    ]
+    ],
+    "uuid": "f0032a7e"
 }

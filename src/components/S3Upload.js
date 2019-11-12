@@ -5,7 +5,7 @@ import { pagesToDisplay, imageBucket } from '../constants'
 
 class S3Upload extends Component {
   s3Upload = () => {
-    axios.post(`${process.env.REACT_APP_API_URL}/pdfs`,{
+    axios.post(process.env.REACT_APP_API_URL,{
       fileName : this.props.data.s3SafeFileName,
       fileType : this.props.data.uploadFileType
     })
