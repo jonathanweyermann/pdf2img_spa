@@ -14,7 +14,7 @@ var region = process.env.REGION
 
 Amplify Params - DO NOT EDIT */
 var aws = require('aws-sdk');
-const S3_BUCKET = process.env.bucket
+const S3_BUCKET = 'quiztrainer-quiz-images-dev'
 
 const exec = require('await-exec')
 
@@ -29,7 +29,7 @@ app.use(awsServerlessExpressMiddleware.eventContext())
 
 // Enable CORS for all methods
 app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "http://pdf2imgspa-20191017120506-hostingbucket-production.s3-website-us-west-2.amazonaws.com")
+  res.header("Access-Control-Allow-Origin", "http://localhost:3000")
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
   res.header("Access-Control-Allow-Credentials", "true")
   next()
@@ -40,12 +40,12 @@ app.use(function(req, res, next) {
  * Example get method *
  **********************/
 
-app.get('/pdfs', function(req, res) {
+app.get('/devpdfs', function(req, res) {
   // Add your code here
   res.json({success: 'get call succeed!', url: req.url});
 });
 
-app.get('/pdfs/*', function(req, res) {
+app.get('/devpdfs/*', function(req, res) {
   // Add your code here
   res.json({success: 'get call succeed!', url: req.url});
 });
@@ -54,7 +54,7 @@ app.get('/pdfs/*', function(req, res) {
 * Example post method *
 ****************************/
 
-app.post('/pdfs', function(req, res) {
+app.post('/devpdfs', function(req, res) {
   // Add your code here
 
   console.log(`EVENTxx: ${req}`);
@@ -88,7 +88,7 @@ app.post('/pdfs', function(req, res) {
     // Data payload of what we are sending back, the url of the signedRequest and a URL where we can access the content after its saved.
     const returnData = {
       signedRequest: data,
-      url: `https://${S3_BUCKET}.s3.amazonaws.com/${fileName}`
+      url: `https://${S3_BUCKET}.s3.amazonaws.com/pdfs/${fileName}`
     };
 
     // Send it all back
@@ -98,7 +98,7 @@ app.post('/pdfs', function(req, res) {
 
 });
 
-app.post('/pdfs/*', function(req, res) {
+app.post('/devpdfs/*', function(req, res) {
   // Add your code here
   res.json({success: 'post call succeed!', url: req.url, body: req.body})
 });
@@ -107,12 +107,12 @@ app.post('/pdfs/*', function(req, res) {
 * Example put method *
 ****************************/
 
-app.put('/pdfs', function(req, res) {
+app.put('/devpdfs', function(req, res) {
   // Add your code here
   res.json({success: 'put call succeed!', url: req.url, body: req.body})
 });
 
-app.put('/pdfs/*', function(req, res) {
+app.put('/devpdfs/*', function(req, res) {
   // Add your code here
   res.json({success: 'put call succeed!', url: req.url, body: req.body})
 });
@@ -121,12 +121,12 @@ app.put('/pdfs/*', function(req, res) {
 * Example delete method *
 ****************************/
 
-app.delete('/pdfs', function(req, res) {
+app.delete('/devpdfs', function(req, res) {
   // Add your code here
   res.json({success: 'delete call succeed!', url: req.url});
 });
 
-app.delete('/pdfs/*', function(req, res) {
+app.delete('/devpdfs/*', function(req, res) {
   // Add your code here
   res.json({success: 'delete call succeed!', url: req.url});
 });

@@ -39,7 +39,6 @@ class Main extends Component {
   }
 
   onDocumentLoad = ({numPages}) => {
-    console.log(`numpages: ${numPages}`)
     this.setState({ numPages, uploading: true });
   }
 
@@ -55,7 +54,6 @@ class Main extends Component {
   }
 
   componentDidMount = () => {
-    console.log(`process.env.REACT_APP_IMAGE_BUCKET: ${process.env.REACT_APP_IMAGE_BUCKET}`)
     const { previous_uploads, params } = this.props;
 
     if ( previous_uploads.length > 0 && this.props.params.index !== undefined) {
@@ -148,15 +146,9 @@ class Main extends Component {
 
   pdfUpload = () => {
     let file = this.uploadInput.files[0];
-    console.log(`this.uploadInput.files[0]: ${this.uploadInput.files[0]}`)
-    //var reader = new FileReader();
-    //reader.readAsBinaryString(file);
     let fileParts = this.uploadInput.files[0].name.split('.');
     let fileName = fileParts[0];
     let fileType = fileParts[1];
-    console.log(`uploadFile: ${file}`)
-    console.log(`fileName: ${JSON.stringify(fileName)}`)
-    console.log(`fileType: ${JSON.stringify(fileType)}`)
     this.setState({ errorMessage: "", success: false, uploadFile:file, s3SafeFileName: `${this.localIdentifier('pcid')}${file.name.replace(/[^0-9a-zA-Z_.]/g, '')}`, uploadFileType:fileType,uploadFileName:fileName, analyzing: true, baseState: false})
   }
 
@@ -165,7 +157,6 @@ class Main extends Component {
   }
 
   render() {
-    console.log(`process.env.REACT_APP_IMAGE_BUCKET: ${process.env.REACT_APP_IMAGE_BUCKET}`)
     return (
       <React.Fragment>
         <div>

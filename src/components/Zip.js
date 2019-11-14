@@ -24,7 +24,6 @@ class Zip extends Component {
     while (FileStatus(this.props.fileName)===403) {
       await this.sleep(buffer);
       buffer = buffer * 1.1
-      console.log(buffer)
       this.setState({loaded: 1})
       if (buffer >= 15000) {
         return null;

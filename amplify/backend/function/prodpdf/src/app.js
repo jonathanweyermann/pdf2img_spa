@@ -35,7 +35,6 @@ app.use(function(req, res, next) {
   next()
 });
 
-
 /**********************
  * Example get method *
  **********************/
@@ -55,9 +54,6 @@ app.get('/prodpdfs/*', function(req, res) {
 ****************************/
 
 app.post('/prodpdfs', function(req, res) {
-  // Add your code here
-
-  console.log(`EVENTxx: ${req}`);
   const s3 = new aws.S3({
     signatureVersion: 'v4'
   });  // Create a new instance of S3
@@ -72,7 +68,7 @@ app.post('/prodpdfs', function(req, res) {
   const s3Params = {
     Bucket: S3_BUCKET,
     Key: `pdfs/${fileName}`,
-    Expires: 86400,
+    Expires: 500,
     ContentType: fileType,
     ACL: 'public-read'
   };
@@ -80,7 +76,6 @@ app.post('/prodpdfs', function(req, res) {
   // Make a request to the S3 API to get a signed URL which we can use to upload our file
   s3.getSignedUrl('putObject', s3Params, (err, data) => {
     if(err){
-
       console.log(`err: ${err}`);
       res.json({failure: 'post call failed', err: err});
       //return ({statusCode: 500, body: {success: false, error: err}});
@@ -93,7 +88,6 @@ app.post('/prodpdfs', function(req, res) {
 
     // Send it all back
     res.json({success: 'post call succeed!', url: returnData.url, body: returnData});
-    //return ({statusCode: 200, body: {success:true, data:{returnData}}});
   });
 
 });

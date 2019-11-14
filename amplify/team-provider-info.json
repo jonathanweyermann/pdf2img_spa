@@ -15,5 +15,23 @@
                 "prodpdf": {}
             }
         }
+    },
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "pdf2img-dev-20191113221227-authRole",
+            "UnauthRoleArn": "arn:aws:iam::509869771638:role/pdf2img-dev-20191113221227-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::509869771638:role/pdf2img-dev-20191113221227-authRole",
+            "Region": "us-west-2",
+            "DeploymentBucketName": "pdf2img-dev-20191113221227-deployment",
+            "UnauthRoleName": "pdf2img-dev-20191113221227-unauthRole",
+            "StackName": "pdf2img-dev-20191113221227",
+            "StackId": "arn:aws:cloudformation:us-west-2:509869771638:stack/pdf2img-dev-20191113221227/59e9ad20-069d-11ea-acfe-0a92bf2e649c"
+        },
+        "categories": {
+            "function": {
+                "prodpdf": {},
+                "devpdf": {}
+            }
+        }
     }
 }

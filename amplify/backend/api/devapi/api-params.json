@@ -1,0 +1,34 @@
+{
+    "paths": [
+        {
+            "name": "/devpdfs",
+            "lambdaFunction": "devpdf",
+            "privacy": {
+                "open": true
+            }
+        }
+    ],
+    "resourceName": "devapi",
+    "apiName": "devapi",
+    "functionArns": [
+        {
+            "lambdaFunction": "devpdf"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "pdf2img-dev-20191113221227-authRole",
+        "unAuthRoleName": "pdf2img-dev-20191113221227-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "devpdf",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}

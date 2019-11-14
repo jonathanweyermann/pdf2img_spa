@@ -28,12 +28,12 @@
 				"FunctionName": {
 					"Fn::If": [
 						"ShouldNotCreateEnvResources",
-						"prodpdf",
+						"devpdf",
 						{
 							"Fn::Join": [
 								"",
 								[
-									"prodpdf",
+									"devpdf",
 									"-",
 									{
 										"Ref": "env"
@@ -63,7 +63,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "pdf2img-dev-20191113221227-deployment",
-					"S3Key": "amplify-builds/prodpdf-684267744f796d797a4d-build.zip"
+					"S3Key": "amplify-builds/devpdf-3632383931586b466254-build.zip"
 				}
 			}
 		},
@@ -73,12 +73,12 @@
 				"RoleName": {
 					"Fn::If": [
 						"ShouldNotCreateEnvResources",
-						"pdf2imgLambdaRole337b1010",
+						"pdf2imgLambdaRole2324b168",
 						{
 							"Fn::Join": [
 								"",
 								[
-									"pdf2imgLambdaRole337b1010",
+									"pdf2imgLambdaRole2324b168",
 									"-",
 									{
 										"Ref": "env"
@@ -151,7 +151,7 @@
 								"s3:*"
 							],
 							"Resource": [
-								"arn:aws:s3:::quiztrainer-quiz-images-prod/*"
+								"arn:aws:s3:::quiztrainer-quiz-images-dev/*"
 							]
 						}
 					]

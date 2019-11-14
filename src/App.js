@@ -34,7 +34,6 @@ class App extends Component {
 
   grabPreviousUploads = () => {
     if (localStorage.getItem('previous_uploads')) {
-      debugger
       var prev_uploads = JSON.parse(localStorage.getItem('previous_uploads'))
       var valid_uploads = prev_uploads.filter(this.checkPdfFileExistance);
       localStorage.setItem('previous_uploads', JSON.stringify(valid_uploads))
