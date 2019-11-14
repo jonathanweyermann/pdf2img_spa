@@ -28,12 +28,12 @@
 				"FunctionName": {
 					"Fn::If": [
 						"ShouldNotCreateEnvResources",
-						"productionpdf",
+						"prodpdf",
 						{
 							"Fn::Join": [
 								"",
 								[
-									"productionpdf",
+									"prodpdf",
 									"-",
 									{
 										"Ref": "env"
@@ -62,8 +62,8 @@
 				"Runtime": "nodejs10.x",
 				"Timeout": "25",
 				"Code": {
-					"S3Bucket": "pdf2imgspa-production-20191109150505-deployment",
-					"S3Key": "amplify-builds/productionpdf-4354504678526f315863-build.zip"
+					"S3Bucket": "pdf2img-production-20191111184601-deployment",
+					"S3Key": "amplify-builds/prodpdf-38664b43344633665732-build.zip"
 				}
 			}
 		},
@@ -73,12 +73,12 @@
 				"RoleName": {
 					"Fn::If": [
 						"ShouldNotCreateEnvResources",
-						"pdf2imgspaLambdaRole292656cc",
+						"pdf2imgLambdaRole337b1010",
 						{
 							"Fn::Join": [
 								"",
 								[
-									"pdf2imgspaLambdaRole292656cc",
+									"pdf2imgLambdaRole337b1010",
 									"-",
 									{
 										"Ref": "env"
@@ -144,6 +144,15 @@
 									}
 								]
 							}
+						},
+						{
+							"Effect": "Allow",
+							"Action": [
+								"s3:*"
+							],
+							"Resource": [
+								"arn:aws:s3:::quiztrainer-quiz-images-prod/*"
+							]
 						}
 					]
 				}

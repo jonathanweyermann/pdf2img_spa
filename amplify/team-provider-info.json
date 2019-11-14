@@ -1,43 +1,18 @@
 {
-    "dev": {
-        "awscloudformation": {
-            "AuthRoleName": "pdf2imgspa-dev-20191017120304-authRole",
-            "UnauthRoleArn": "arn:aws:iam::509869771638:role/pdf2imgspa-dev-20191017120304-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::509869771638:role/pdf2imgspa-dev-20191017120304-authRole",
-            "Region": "us-west-2",
-            "DeploymentBucketName": "pdf2imgspa-dev-20191017120304-deployment",
-            "UnauthRoleName": "pdf2imgspa-dev-20191017120304-unauthRole",
-            "StackName": "pdf2imgspa-dev-20191017120304",
-            "StackId": "arn:aws:cloudformation:us-west-2:509869771638:stack/pdf2imgspa-dev-20191017120304/5dd540c0-f108-11e9-ad9f-060d0d1be776"
-        },
-        "categories": {
-            "auth": {
-                "pdf2imgspa6d0bf1fe": {}
-            },
-            "function": {
-                "pdfupload": {},
-                "productionpdf": {}
-            }
-        }
-    },
     "production": {
         "awscloudformation": {
-            "AuthRoleName": "pdf2imgspa-production-20191109150505-authRole",
-            "UnauthRoleArn": "arn:aws:iam::509869771638:role/pdf2imgspa-production-20191109150505-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::509869771638:role/pdf2imgspa-production-20191109150505-authRole",
+            "AuthRoleName": "pdf2img-production-20191111184601-authRole",
+            "UnauthRoleArn": "arn:aws:iam::509869771638:role/pdf2img-production-20191111184601-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::509869771638:role/pdf2img-production-20191111184601-authRole",
             "Region": "us-west-2",
-            "DeploymentBucketName": "pdf2imgspa-production-20191109150505-deployment",
-            "UnauthRoleName": "pdf2imgspa-production-20191109150505-unauthRole",
-            "StackName": "pdf2imgspa-production-20191109150505",
-            "StackId": "arn:aws:cloudformation:us-west-2:509869771638:stack/pdf2imgspa-production-20191109150505/fcd8d010-033c-11ea-83e8-06a318773a24"
+            "DeploymentBucketName": "pdf2img-production-20191111184601-deployment",
+            "UnauthRoleName": "pdf2img-production-20191111184601-unauthRole",
+            "StackName": "pdf2img-production-20191111184601",
+            "StackId": "arn:aws:cloudformation:us-west-2:509869771638:stack/pdf2img-production-20191111184601/31a8e020-04ee-11ea-823c-02353448ae88"
         },
         "categories": {
-            "auth": {
-                "pdf2imgspa6d0bf1fe": {}
-            },
             "function": {
-                "pdfupload": {},
-                "productionpdf": {}
+                "prodpdf": {}
             }
         }
     }

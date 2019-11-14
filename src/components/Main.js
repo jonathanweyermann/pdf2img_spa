@@ -3,7 +3,7 @@ import { Container, Button } from 'react-bootstrap';
 import Zip from './Zip'
 import S3Upload from './S3Upload'
 import PdfImages from './PdfImages'
-import { pagesToDisplay, imageBucket } from '../constants'
+import { pagesToDisplay } from '../constants'
 import { Document, pdfjs } from "react-pdf";
 import { useParams } from "react-router-dom";
 import FileStatus from '../util/FileStatus'
@@ -13,8 +13,6 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/$
 function withMyHook(Component) {
   return function WrappedComponent(props) {
     const params = useParams();
-    //console.log(`params: ${JSON.stringify(params)}`);
-    //console.log(`props: ${JSON.stringify(props)}`);
     return <Component {...props} params={params} />;
   }
 }
@@ -57,15 +55,16 @@ class Main extends Component {
   }
 
   componentDidMount = () => {
+    console.log(`process.env.REACT_APP_IMAGE_BUCKET: ${process.env.REACT_APP_IMAGE_BUCKET}`)
     const { previous_uploads, params } = this.props;
 
     if ( previous_uploads.length > 0 && this.props.params.index !== undefined) {
       let { uploadFileName, numPages, s3SafeFileName} = previous_uploads[params.index];
       var imgs = [];
       for(var index=1;index <= Math.min(pagesToDisplay,numPages) ;index++){
-        imgs.push(`${imageBucket}${s3SafeFileName.split('.')[0]}/image${index}.jpg`);
+        imgs.push(`${process.env.REACT_APP_IMAGE_BUCKET}${s3SafeFileName.split('.')[0]}/image${index}.jpg`);
       }
-      if (FileStatus(`${imageBucket}pdfs/${s3SafeFileName}`)===200) {
+      if (FileStatus(`${process.env.REACT_APP_IMAGE_BUCKET}pdfs/${s3SafeFileName}`)===200) {
         this.setState({success: true, images: imgs, analyzing: false, uploading: false, firstPage: 1, lastPage: Math.min(pagesToDisplay,numPages),baseState: false, uploadFileName, numPages, s3SafeFileName})
       } else {
         this.setState({errorMessage: "Can't find pdf - server probably deleted it"})
@@ -116,7 +115,7 @@ class Main extends Component {
     let offset = data.selected * pagesToDisplay;
     var imgs = []
     for(var index=1+offset;index <= Math.min(pagesToDisplay+offset,this.state.numPages); index++){
-      imgs.push(`${imageBucket}${this.state.s3SafeFileName.split('.')[0]}/image${index}.jpg`);
+      imgs.push(`${process.env.REACT_APP_IMAGE_BUCKET}${this.state.s3SafeFileName.split('.')[0]}/image${index}.jpg`);
     }
     this.setState({images: imgs, firstPage: 1+offset, lastPage: Math.min(pagesToDisplay+offset,this.state.numPages)})
   }
@@ -147,13 +146,17 @@ class Main extends Component {
     this.setState({success: true, images: imgs, analyzing: false, uploading: false, firstPage: 1, lastPage: Math.min(pagesToDisplay,this.state.numPages)});
   }
 
-  pdfUpload = async () => {
+  pdfUpload = () => {
     let file = this.uploadInput.files[0];
-    var reader = new FileReader();
-    reader.readAsBinaryString(file);
+    console.log(`this.uploadInput.files[0]: ${this.uploadInput.files[0]}`)
+    //var reader = new FileReader();
+    //reader.readAsBinaryString(file);
     let fileParts = this.uploadInput.files[0].name.split('.');
     let fileName = fileParts[0];
     let fileType = fileParts[1];
+    console.log(`uploadFile: ${file}`)
+    console.log(`fileName: ${JSON.stringify(fileName)}`)
+    console.log(`fileType: ${JSON.stringify(fileType)}`)
     this.setState({ errorMessage: "", success: false, uploadFile:file, s3SafeFileName: `${this.localIdentifier('pcid')}${file.name.replace(/[^0-9a-zA-Z_.]/g, '')}`, uploadFileType:fileType,uploadFileName:fileName, analyzing: true, baseState: false})
   }
 
@@ -162,6 +165,7 @@ class Main extends Component {
   }
 
   render() {
+    console.log(`process.env.REACT_APP_IMAGE_BUCKET: ${process.env.REACT_APP_IMAGE_BUCKET}`)
     return (
       <React.Fragment>
         <div>
@@ -173,7 +177,7 @@ class Main extends Component {
           {this.state.success ? <PdfImages data={this.state} handlePageClick={this.handlePageClick} /> : null}
         </div>
         <Container>
-          {this.state.success ? (<Zip addToPreviousUploads={() => this.addToPreviousUploads()} fileName={`${imageBucket}${this.state.s3SafeFileName.split('.')[0]}.zip`} />) : null}
+          {this.state.success ? (<Zip addToPreviousUploads={() => this.addToPreviousUploads()} fileName={`${process.env.REACT_APP_IMAGE_BUCKET}${this.state.s3SafeFileName.split('.')[0]}.zip`} />) : null}
           <input className='btn btn-success input-padding' value={this.state.fileName} onChange={this.handleChange} ref={(ref) => { this.uploadInput = ref; }} type="file" accept=".pdf"/>
           <Button onClick={this.pdfUpload} disabled={!this.state.fileName} className='convert-button-padding'>Convert to JPG Images</Button>
         </Container>

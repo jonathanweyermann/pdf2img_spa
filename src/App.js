@@ -5,16 +5,14 @@ import About from './components/About'
 import axios from 'axios'
 import Amplify from 'aws-amplify';
 import awsmobile from './aws-exports';
-import { imageBucket } from './constants'
 import FileStatus from './util/FileStatus'
 import { Navbar, NavDropdown, Nav } from 'react-bootstrap';
 import { Router, Switch, Route } from "react-router-dom";
-
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faDownload } from '@fortawesome/free-solid-svg-icons'
 import { createBrowserHistory } from 'history';
-library.add(faDownload)
 require('dotenv').config()
+library.add(faDownload)
 
 Amplify.configure(awsmobile);
 
@@ -48,7 +46,7 @@ class App extends Component {
   }
 
   checkPdfFileExistance = (upload) => {
-    return (FileStatus(`${imageBucket}pdfs/${upload.s3SafeFileName}`)===200)
+    return (FileStatus(`${process.env.REACT_APP_IMAGE_BUCKET}pdfs/${upload.s3SafeFileName}`)===200)
   }
 
  header = () => {

@@ -6,8 +6,6 @@ import Main from '../components/Main';
 import MainBuilder from '../components/MainBuilder'
 const fs = require('fs');
 const path = require("path");
-import { imageBucket } from '../constants'
-import * as constants from '../constants';
 import { Switch, Route, useParams } from "react-router-dom";
 import * as dependency from 'react-router-dom';
 import { createBrowserHistory } from 'history';
@@ -28,7 +26,7 @@ describe('main component tests', () => {
       status: 200
     })
     window.XMLHttpRequest = jest.fn().mockImplementation(xhrMockClass)
-    constants.imageBucket = './';
+    process.env.REACT_APP_IMAGE_BUCKET = './';
   });
 
   it('uploads a file', () => {

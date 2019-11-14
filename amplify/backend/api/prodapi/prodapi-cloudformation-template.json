@@ -14,15 +14,15 @@
         },
 
 
-          "functionproductionpdfName": {
+          "functionprodpdfName": {
             "Type": "String",
-            "Default": "functionproductionpdfName"
+            "Default": "functionprodpdfName"
           },
 
 
-          "functionproductionpdfArn": {
+          "functionprodpdfArn": {
             "Type": "String",
-            "Default": "functionproductionpdfArn"
+            "Default": "functionprodpdfArn"
           }
 
 
@@ -42,16 +42,16 @@
     "Resources": {
 
 
-      "prodpdf": {
+      "prodapi": {
         "Type": "AWS::ApiGateway::RestApi",
         "Properties": {
           "Description": "",
-          "Name": "prodpdf",
+          "Name": "prodapi",
           "Body": {
             "swagger": "2.0",
             "info": {
               "version": "2018-05-24T17:52:00Z",
-              "title": "prodpdf"
+              "title": "prodapi"
             },
             "host": {
                 "Fn::Join": [
@@ -87,7 +87,7 @@
             ],
             "paths": {
 
-              "/prodpdf": {
+              "/prodpdfs": {
                 "options": {
                   "consumes": [
                     "application/json"
@@ -118,7 +118,7 @@
                         "responseParameters": {
                           "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'",
                           "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
-                          "method.response.header.Access-Control-Allow-Origin": "'http://pdf2imgspa-20191017120506-hostingbucket-production.s3-website-us-west-2.amazonaws.com'"
+                          "method.response.header.Access-Control-Allow-Origin": "'https://d3mj1nbhrzlbf6.cloudfront.net'"
                         }
                       }
                     },
@@ -173,7 +173,7 @@
 
                             {
 
-                                "Ref": "functionproductionpdfArn"
+                                "Ref": "functionprodpdfArn"
                             },
 
                             "/invocations"
@@ -186,7 +186,7 @@
                   }
                 }
               },
-              "/prodpdf/{proxy+}": {
+              "/prodpdfs/{proxy+}": {
                 "options": {
                   "consumes": [
                     "application/json"
@@ -217,7 +217,7 @@
                         "responseParameters": {
                           "method.response.header.Access-Control-Allow-Methods": "'DELETE,GET,HEAD,OPTIONS,PATCH,POST,PUT'",
                           "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
-                          "method.response.header.Access-Control-Allow-Origin": "'http://pdf2imgspa-20191017120506-hostingbucket-production.s3-website-us-west-2.amazonaws.com'"
+                          "method.response.header.Access-Control-Allow-Origin": "'*'"
                         }
                       }
                     },
@@ -272,7 +272,7 @@
 
                           {
 
-                            "Ref": "functionproductionpdfArn"
+                            "Ref": "functionprodpdfArn"
                           },
 
                           "/invocations"
@@ -329,12 +329,12 @@
 
 
 
-        "functionproductionpdfPermissionprodpdf": {
+        "functionprodpdfPermissionprodapi": {
             "Type": "AWS::Lambda::Permission",
             "Properties": {
                 "FunctionName":
                     {
-                        "Ref":  "functionproductionpdfName"
+                        "Ref":  "functionprodpdfName"
                     },
 
                     "Action": "lambda:InvokeFunction",
@@ -353,7 +353,7 @@
                             },
                             ":",
                             {
-                                "Ref": "prodpdf"
+                                "Ref": "prodapi"
                             },
                             "/*/*/*"
                         ]
@@ -364,7 +364,7 @@
 
 
 
-      "DeploymentAPIGWprodpdf": {
+      "DeploymentAPIGWprodapi": {
         "Type": "AWS::ApiGateway::Deployment",
         "Properties": {
           "Description": "The Development stage deployment of your API.",
@@ -378,7 +378,7 @@
             ]
           },
           "RestApiId": {
-            "Ref": "prodpdf"
+            "Ref": "prodapi"
           }
         }
       }
@@ -386,11 +386,11 @@
     "Outputs": {
         "RootUrl": {
             "Description": "Root URL of the API gateway",
-            "Value": {"Fn::Join": ["", ["https://", {"Ref": "prodpdf"}, ".execute-api.", {"Ref": "AWS::Region"}, ".amazonaws.com/", {"Fn::If": ["ShouldNotCreateEnvResources","Prod", {"Ref": "env"} ]}]]}
+            "Value": {"Fn::Join": ["", ["https://", {"Ref": "prodapi"}, ".execute-api.", {"Ref": "AWS::Region"}, ".amazonaws.com/", {"Fn::If": ["ShouldNotCreateEnvResources","Prod", {"Ref": "env"} ]}]]}
         },
         "ApiName": {
           "Description": "API Friendly name",
-          "Value": "prodpdf"
+          "Value": "prodapi"
         }
     }
   }
