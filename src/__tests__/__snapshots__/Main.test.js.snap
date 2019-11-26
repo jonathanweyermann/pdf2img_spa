@@ -52,10 +52,9 @@ exports[`main component tests retrieves a previously uploaded file and shows sna
       <PdfImages
         data={
           Object {
-            "analyzing": false,
-            "baseState": false,
             "errorMessage": "",
             "fileName": "",
+            "fileState": "uploaded",
             "firstPage": 1,
             "images": Array [
               "./78559523reactnative/image1.jpg",
@@ -70,11 +69,9 @@ exports[`main component tests retrieves a previously uploaded file and shows sna
             "lastPage": 8,
             "numPages": 23,
             "s3SafeFileName": "78559523reactnative.pdf",
-            "success": true,
             "uploadFile": "",
             "uploadFileName": "reactnative",
             "uploadFileType": "",
-            "uploading": false,
           }
         }
         handlePageClick={[Function]}

@@ -22,24 +22,29 @@ class Main extends Component {
     super(props);
     this.state = {
       images: [],
-      success: false,
-      analyzing: false,
       fileName: "",
       numPages: "",
       uploadFileType: "",
       uploadFile: "",
       uploadFileName: "",
       s3SafeFileName: "",
-      uploading: false,
-      baseState: true,
+      fileState: this.fileState.base,
       firstPage: 1,
       lastPage: pagesToDisplay,
       errorMessage: ""
     };
+    console.log(this.state.fileState);
+  }
+
+  fileState = {
+    base: 'none',
+    analyzing: 'analyzing',
+    uploading: 'uploading',
+    uploaded: 'uploaded'
   }
 
   onDocumentLoad = ({numPages}) => {
-    this.setState({ numPages, uploading: true });
+    this.setState({ numPages, fileState: this.fileState.uploading });
   }
 
   localIdentifier = (id) => {
@@ -63,7 +68,7 @@ class Main extends Component {
         imgs.push(`${process.env.REACT_APP_IMAGE_BUCKET}${s3SafeFileName.split('.')[0]}/image${index}.jpg`);
       }
       if (FileStatus(`${process.env.REACT_APP_IMAGE_BUCKET}pdfs/${s3SafeFileName}`)===200) {
-        this.setState({success: true, images: imgs, analyzing: false, uploading: false, firstPage: 1, lastPage: Math.min(pagesToDisplay,numPages),baseState: false, uploadFileName, numPages, s3SafeFileName})
+        this.setState({fileState: this.fileState.uploaded, images: imgs, firstPage: 1, lastPage: Math.min(pagesToDisplay,numPages), uploadFileName, numPages, s3SafeFileName})
       } else {
         this.setState({errorMessage: "Can't find pdf - server probably deleted it"})
       }
@@ -141,7 +146,7 @@ class Main extends Component {
   }
 
   setToSuccess = (imgs) => {
-    this.setState({success: true, images: imgs, analyzing: false, uploading: false, firstPage: 1, lastPage: Math.min(pagesToDisplay,this.state.numPages)});
+    this.setState({fileState: this.fileState.uploaded, images: imgs, firstPage: 1, lastPage: Math.min(pagesToDisplay,this.state.numPages)});
   }
 
   pdfUpload = () => {
@@ -149,11 +154,29 @@ class Main extends Component {
     let fileParts = this.uploadInput.files[0].name.split('.');
     let fileName = fileParts[0];
     let fileType = fileParts[1];
-    this.setState({ errorMessage: "", success: false, uploadFile:file, s3SafeFileName: `${this.localIdentifier('pcid')}${file.name.replace(/[^0-9a-zA-Z_.]/g, '')}`, uploadFileType:fileType,uploadFileName:fileName, analyzing: true, baseState: false})
+    this.setState({fileState: this.fileState.analyzing, errorMessage: "", uploadFile:file, s3SafeFileName: `${this.localIdentifier('pcid')}${file.name.replace(/[^0-9a-zA-Z_.]/g, '')}`, uploadFileType:fileType,uploadFileName:fileName})
   }
 
   handleChange = (ev) => {
     this.setState({fileName : ev.target.value});
+  }
+
+  fileStateSwitch = (fileState) => {
+    switch(fileState) {
+      case this.fileState.base:
+        return this.description();
+      case this.fileState.analyzing:
+        return this.documentAnalize();
+      case this.fileState.uploading:
+        return (<React.Fragment>
+                  <S3Upload data={this.state} setToSuccess={this.setToSuccess} />
+                  { this.state.numPages ? this.numPagesDisplay() : null }
+                </React.Fragment>)
+      case this.fileState.uploaded:
+        return (<PdfImages data={this.state} handlePageClick={this.handlePageClick} />)
+      default:
+        return this.description();
+    }
   }
 
   render() {
@@ -161,14 +184,10 @@ class Main extends Component {
       <React.Fragment>
         <div>
           {this.state.errorMessage ? this.errorMessage() : null }
-          {this.state.baseState ? this.description() : null }
-          {this.state.uploading ? <S3Upload data={this.state} setToSuccess={this.setToSuccess} /> : null}
-          {this.state.numPages && this.state.uploading ? this.numPagesDisplay() : null}
-          {this.state.analyzing ? this.documentAnalize() : null}
-          {this.state.success ? <PdfImages data={this.state} handlePageClick={this.handlePageClick} /> : null}
+          {this.fileStateSwitch(this.state.fileState)}
         </div>
         <Container>
-          {this.state.success ? (<Zip addToPreviousUploads={() => this.addToPreviousUploads()} fileName={`${process.env.REACT_APP_IMAGE_BUCKET}${this.state.s3SafeFileName.split('.')[0]}.zip`} />) : null}
+          {this.state.fileState===this.fileState.uploaded ? (<Zip addToPreviousUploads={() => this.addToPreviousUploads()} fileName={`${process.env.REACT_APP_IMAGE_BUCKET}${this.state.s3SafeFileName.split('.')[0]}.zip`} />) : null}
           <input className='btn btn-success input-padding' value={this.state.fileName} onChange={this.handleChange} ref={(ref) => { this.uploadInput = ref; }} type="file" accept=".pdf"/>
           <Button onClick={this.pdfUpload} disabled={!this.state.fileName} className='convert-button-padding'>Convert to JPG Images</Button>
         </Container>
