@@ -1,0 +1,34 @@
+{
+    "paths": [
+        {
+            "name": "/prodpdfs",
+            "lambdaFunction": "prodpdf",
+            "privacy": {
+                "open": true
+            }
+        }
+    ],
+    "resourceName": "prodapi",
+    "apiName": "prodapi",
+    "functionArns": [
+        {
+            "lambdaFunction": "prodpdf"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "pdf2img-production-20191111184601-authRole",
+        "unAuthRoleName": "pdf2img-production-20191111184601-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "prodpdf",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}

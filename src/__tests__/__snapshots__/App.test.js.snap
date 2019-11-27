@@ -1,0 +1,335 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`First React component test with Enzyme renders correctly 1`] = `
+<div
+  className="App"
+>
+  <header
+    className="App-header"
+  >
+    <nav
+      className="navbar-dark navbar navbar-expand-sm navbar-light"
+    >
+      <a
+        className="navbar-brand"
+        href="#home"
+      >
+        PDF 2 Image
+        <div
+          className="descriptor"
+        >
+          Convert a PDF file to a set of optimized JPG images
+        </div>
+      </a>
+      <button
+        aria-controls="basic-navbar-nav"
+        aria-label="Toggle navigation"
+        className="navbar-toggler collapsed"
+        onClick={[Function]}
+        type="button"
+      >
+        <span
+          className="navbar-toggler-icon"
+        />
+      </button>
+      <div
+        aria-expanded={null}
+        className="navbar-collapse collapse"
+        id="basic-navbar-nav"
+      >
+        <div
+          className="mr-auto navbar-nav"
+          onKeyDown={[Function]}
+        >
+          <a
+            className="nav-link"
+            data-rb-event-key="/"
+            href="/"
+            onClick={[Function]}
+            onKeyDown={[Function]}
+          >
+            Home
+          </a>
+          <div
+            className="dropdown nav-item"
+            onKeyDown={[Function]}
+          >
+            <a
+              aria-expanded={false}
+              aria-haspopup={true}
+              className="dropdown-toggle nav-link"
+              data-rb-event-key={null}
+              href="#"
+              onClick={[Function]}
+              onKeyDown={[Function]}
+              role="button"
+            >
+              Previous PDFs
+            </a>
+            <div
+              aria-labelledby={null}
+              className="dropdown-menu"
+            />
+          </div>
+          <a
+            className="nav-link"
+            data-rb-event-key="/about"
+            href="/about"
+            onClick={[Function]}
+            onKeyDown={[Function]}
+          >
+            About
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <div>
+    <div>
+      <div
+        className="center container"
+      >
+        <div
+          className="tight-container"
+        >
+          <div
+            className="mt2"
+          >
+            This free tool converts PDFs to JPGs. It shows thumbnails of each page so you can easily enlarge and download only the files you wish to download
+          </div>
+          <div
+            className="mt2"
+          >
+            <span
+              className="big"
+            >
+              1
+            </span>
+             Click the 'Choose File' button and select a PDF file you wish to convert. Click 'Convert to JPG images' and wait for the conversion process to finish.
+          </div>
+          <div>
+            <span
+              className="big"
+            >
+              2
+            </span>
+             Download the results either file by file or click the DOWNLOAD ALL button to get them all at once in a ZIP archive.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="container"
+    >
+      <input
+        accept=".pdf"
+        className="btn btn-success input-padding"
+        onChange={[Function]}
+        type="file"
+        value=""
+      />
+      <button
+        className="convert-button-padding btn btn-primary"
+        disabled={true}
+        onClick={[Function]}
+        type="button"
+      >
+        Convert to JPG Images
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Previous uploads exist locally stored creates a screenshot for the pdf dropdown view for previously uploaded pdfs 1`] = `
+<div
+  className="App"
+>
+  <header
+    className="App-header"
+  >
+    <nav
+      className="navbar-dark navbar navbar-expand-sm navbar-light"
+    >
+      <a
+        className="navbar-brand"
+        href="#home"
+      >
+        PDF 2 Image
+        <div
+          className="descriptor"
+        >
+          Convert a PDF file to a set of optimized JPG images
+        </div>
+      </a>
+      <button
+        aria-controls="basic-navbar-nav"
+        aria-label="Toggle navigation"
+        className="navbar-toggler collapsed"
+        onClick={[Function]}
+        type="button"
+      >
+        <span
+          className="navbar-toggler-icon"
+        />
+      </button>
+      <div
+        aria-expanded={null}
+        className="navbar-collapse collapse"
+        id="basic-navbar-nav"
+      >
+        <div
+          className="mr-auto navbar-nav"
+          onKeyDown={[Function]}
+        >
+          <a
+            className="nav-link"
+            data-rb-event-key="/"
+            href="/"
+            onClick={[Function]}
+            onKeyDown={[Function]}
+          >
+            Home
+          </a>
+          <div
+            className="dropdown nav-item"
+            onKeyDown={[Function]}
+          >
+            <a
+              aria-expanded={false}
+              aria-haspopup={true}
+              className="dropdown-toggle nav-link"
+              data-rb-event-key={null}
+              href="#"
+              onClick={[Function]}
+              onKeyDown={[Function]}
+              role="button"
+            >
+              Previous PDFs
+            </a>
+            <div
+              aria-labelledby={null}
+              className="dropdown-menu"
+            >
+              <a
+                className="dropdown-item"
+                href="/uploaded/0"
+                onClick={[Function]}
+                onKeyDown={[Function]}
+                state={
+                  Object {
+                    "item": Object {
+                      "numPages": 2,
+                      "s3SafeFileName": "78559523template.pdf",
+                      "uploadFileName": "template",
+                    },
+                  }
+                }
+              >
+                template
+              </a>
+              <a
+                className="dropdown-item"
+                href="/uploaded/1"
+                onClick={[Function]}
+                onKeyDown={[Function]}
+                state={
+                  Object {
+                    "item": Object {
+                      "numPages": 242,
+                      "s3SafeFileName": "78559523reactnative.pdf",
+                      "uploadFileName": "reactnative",
+                    },
+                  }
+                }
+              >
+                reactnative
+              </a>
+              <a
+                className="dropdown-item"
+                href="/uploaded/2"
+                onClick={[Function]}
+                onKeyDown={[Function]}
+                state={
+                  Object {
+                    "item": Object {
+                      "numPages": 2,
+                      "s3SafeFileName": "78559523TrainTickets.pdf",
+                      "uploadFileName": "TrainTickets",
+                    },
+                  }
+                }
+              >
+                TrainTickets
+              </a>
+            </div>
+          </div>
+          <a
+            className="nav-link"
+            data-rb-event-key="/about"
+            href="/about"
+            onClick={[Function]}
+            onKeyDown={[Function]}
+          >
+            About
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <div>
+    <div>
+      <div
+        className="center container"
+      >
+        <div
+          className="tight-container"
+        >
+          <div
+            className="mt2"
+          >
+            This free tool converts PDFs to JPGs. It shows thumbnails of each page so you can easily enlarge and download only the files you wish to download
+          </div>
+          <div
+            className="mt2"
+          >
+            <span
+              className="big"
+            >
+              1
+            </span>
+             Click the 'Choose File' button and select a PDF file you wish to convert. Click 'Convert to JPG images' and wait for the conversion process to finish.
+          </div>
+          <div>
+            <span
+              className="big"
+            >
+              2
+            </span>
+             Download the results either file by file or click the DOWNLOAD ALL button to get them all at once in a ZIP archive.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="container"
+    >
+      <input
+        accept=".pdf"
+        className="btn btn-success input-padding"
+        onChange={[Function]}
+        type="file"
+        value=""
+      />
+      <button
+        className="convert-button-padding btn btn-primary"
+        disabled={true}
+        onClick={[Function]}
+        type="button"
+      >
+        Convert to JPG Images
+      </button>
+    </div>
+  </div>
+</div>
+`;
