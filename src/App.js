@@ -51,7 +51,7 @@ class App extends Component {
  header = () => {
    return (
      <Navbar className="navbar-dark" expand="sm" >
-       <Navbar.Brand href="#home">PDF 2 Image<div className='descriptor'>Convert a PDF file to a set of optimized JPG images</div></Navbar.Brand>
+       <Navbar.Brand href="#home">PDF 2 Image</Navbar.Brand>
        <Navbar.Toggle aria-controls="basic-navbar-nav" />
        <Navbar.Collapse id="basic-navbar-nav">
          <Nav className="mr-auto">

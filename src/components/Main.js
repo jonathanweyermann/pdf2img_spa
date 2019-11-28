@@ -7,6 +7,10 @@ import { pagesToDisplay } from '../constants'
 import { Document, pdfjs } from "react-pdf";
 import { useParams } from "react-router-dom";
 import FileStatus from '../util/FileStatus'
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
+import './Main.css'
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
@@ -33,7 +37,6 @@ class Main extends Component {
       lastPage: pagesToDisplay,
       errorMessage: ""
     };
-    console.log(this.state.fileState);
   }
 
   fileState = {
@@ -104,13 +107,40 @@ class Main extends Component {
 
   description = () => {
     return (
-      <Container className="center">
-        <div className="tight-container">
-         <div className="mt2">This free tool converts PDFs to JPGs. It shows thumbnails of each page so you can easily enlarge and download only the files you wish to download</div>
-         <div className="mt2"><span className="big">1</span> Click the 'Choose File' button and select a PDF file you wish to convert. Click 'Convert to JPG images' and wait for the conversion process to finish.</div>
-         <div><span className="big">2</span> Download the results either file by file or click the DOWNLOAD ALL button to get them all at once in a ZIP archive.</div>
-        </div>
-      </Container>
+      <div className="main-style">
+        <Container>
+          <div className="tight-container">
+           <div className='center heading-font'>Convert a PDF file to a set of optimized JPG images</div>
+           <div className="mt2">This free tool converts PDFs to JPGs. It shows thumbnails of each page so you can easily enlarge and download only the files you wish to download</div>
+           <div className="mt2"><span className="big">1</span> Click the 'Choose File' button and select a PDF file you wish to convert. Click 'Convert to JPG images' and wait for the conversion process to finish.</div>
+           <div><span className="big">2</span> Download the results either file by file or click the All Images button to get them all at once in a ZIP archive.</div>
+          </div>
+        </Container>
+      </div>
+    )
+  }
+
+  features = () => {
+    return (
+      <React.Fragment>
+        <div><img style={{ width: '100%', maxWidth: '740px', marginTop: '40px'}}  src="/upload.gif" /></div>
+        <Row>
+          <Col xs="12" className='center heading-font-plus'>Features</Col>
+          <Col md="4"><h4>Download a ZIP Archive</h4>
+            You can download each image individually by clicking on the download button below each image,
+            or you can download a ZIP file containing all the images.
+          </Col>
+          <Col md="4"><h4>Look access your previously uploaded PDFs</h4>
+            Previously uploaded PDFs are will be available to be viewed and downloaded again on the same computer. Images and PDFs and
+            ZIP files are stored on the server for 30 days before they are erased.
+          </Col>
+          <Col md="4"><h4>Full Size image viewer</h4>
+            Click on the image to open the image full size. You'll be able to download, rotate or see an
+            even bigger version of the image.
+          </Col>
+          <Col md="4"></Col>
+        </Row>
+      </React.Fragment>
     )
   }
 
@@ -179,6 +209,16 @@ class Main extends Component {
     }
   }
 
+  controlsBar = () => {
+    return (
+      <React.Fragment>
+        {this.state.fileState===this.fileState.uploaded ? (<Zip addToPreviousUploads={() => this.addToPreviousUploads()} fileName={`${process.env.REACT_APP_IMAGE_BUCKET}${this.state.s3SafeFileName.split('.')[0]}.zip`} />) : null}
+        <input className='btn btn-success input-padding' value={this.state.fileName} onChange={this.handleChange} ref={(ref) => { this.uploadInput = ref; }} type="file" accept=".pdf"/>
+        <Button onClick={this.pdfUpload} disabled={!this.state.fileName} className='convert-button-padding'>Convert to JPG Images</Button>
+      </React.Fragment>
+    )
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -187,9 +227,8 @@ class Main extends Component {
           {this.fileStateSwitch(this.state.fileState)}
         </div>
         <Container>
-          {this.state.fileState===this.fileState.uploaded ? (<Zip addToPreviousUploads={() => this.addToPreviousUploads()} fileName={`${process.env.REACT_APP_IMAGE_BUCKET}${this.state.s3SafeFileName.split('.')[0]}.zip`} />) : null}
-          <input className='btn btn-success input-padding' value={this.state.fileName} onChange={this.handleChange} ref={(ref) => { this.uploadInput = ref; }} type="file" accept=".pdf"/>
-          <Button onClick={this.pdfUpload} disabled={!this.state.fileName} className='convert-button-padding'>Convert to JPG Images</Button>
+          {this.controlsBar()}
+          {this.state.fileState===this.fileState.base ? this.features() : null }
         </Container>
       </React.Fragment>
     )

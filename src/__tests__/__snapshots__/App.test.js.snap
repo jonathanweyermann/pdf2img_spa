@@ -15,11 +15,6 @@ exports[`First React component test with Enzyme renders correctly 1`] = `
         href="#home"
       >
         PDF 2 Image
-        <div
-          className="descriptor"
-        >
-          Convert a PDF file to a set of optimized JPG images
-        </div>
       </a>
       <button
         aria-controls="basic-navbar-nav"
@@ -87,33 +82,42 @@ exports[`First React component test with Enzyme renders correctly 1`] = `
   <div>
     <div>
       <div
-        className="center container"
+        className="main-style"
       >
         <div
-          className="tight-container"
+          className="container"
         >
           <div
-            className="mt2"
+            className="tight-container"
           >
-            This free tool converts PDFs to JPGs. It shows thumbnails of each page so you can easily enlarge and download only the files you wish to download
-          </div>
-          <div
-            className="mt2"
-          >
-            <span
-              className="big"
+            <div
+              className="center heading-font"
             >
-              1
-            </span>
-             Click the 'Choose File' button and select a PDF file you wish to convert. Click 'Convert to JPG images' and wait for the conversion process to finish.
-          </div>
-          <div>
-            <span
-              className="big"
+              Convert a PDF file to a set of optimized JPG images
+            </div>
+            <div
+              className="mt2"
             >
-              2
-            </span>
-             Download the results either file by file or click the DOWNLOAD ALL button to get them all at once in a ZIP archive.
+              This free tool converts PDFs to JPGs. It shows thumbnails of each page so you can easily enlarge and download only the files you wish to download
+            </div>
+            <div
+              className="mt2"
+            >
+              <span
+                className="big"
+              >
+                1
+              </span>
+               Click the 'Choose File' button and select a PDF file you wish to convert. Click 'Convert to JPG images' and wait for the conversion process to finish.
+            </div>
+            <div>
+              <span
+                className="big"
+              >
+                2
+              </span>
+               Download the results either file by file or click the DOWNLOAD ALL button to get them all at once in a ZIP archive.
+            </div>
           </div>
         </div>
       </div>
@@ -136,6 +140,18 @@ exports[`First React component test with Enzyme renders correctly 1`] = `
       >
         Convert to JPG Images
       </button>
+      <div>
+        <img
+          src="/upload.gif"
+          style={
+            Object {
+              "marginTop": "40px",
+              "maxWidth": "740px",
+              "width": "100%",
+            }
+          }
+        />
+      </div>
     </div>
   </div>
 </div>
@@ -156,11 +172,6 @@ exports[`Previous uploads exist locally stored creates a screenshot for the pdf 
         href="#home"
       >
         PDF 2 Image
-        <div
-          className="descriptor"
-        >
-          Convert a PDF file to a set of optimized JPG images
-        </div>
       </a>
       <button
         aria-controls="basic-navbar-nav"
@@ -280,33 +291,42 @@ exports[`Previous uploads exist locally stored creates a screenshot for the pdf 
   <div>
     <div>
       <div
-        className="center container"
+        className="main-style"
       >
         <div
-          className="tight-container"
+          className="container"
         >
           <div
-            className="mt2"
+            className="tight-container"
           >
-            This free tool converts PDFs to JPGs. It shows thumbnails of each page so you can easily enlarge and download only the files you wish to download
-          </div>
-          <div
-            className="mt2"
-          >
-            <span
-              className="big"
+            <div
+              className="center heading-font"
             >
-              1
-            </span>
-             Click the 'Choose File' button and select a PDF file you wish to convert. Click 'Convert to JPG images' and wait for the conversion process to finish.
-          </div>
-          <div>
-            <span
-              className="big"
+              Convert a PDF file to a set of optimized JPG images
+            </div>
+            <div
+              className="mt2"
             >
-              2
-            </span>
-             Download the results either file by file or click the DOWNLOAD ALL button to get them all at once in a ZIP archive.
+              This free tool converts PDFs to JPGs. It shows thumbnails of each page so you can easily enlarge and download only the files you wish to download
+            </div>
+            <div
+              className="mt2"
+            >
+              <span
+                className="big"
+              >
+                1
+              </span>
+               Click the 'Choose File' button and select a PDF file you wish to convert. Click 'Convert to JPG images' and wait for the conversion process to finish.
+            </div>
+            <div>
+              <span
+                className="big"
+              >
+                2
+              </span>
+               Download the results either file by file or click the DOWNLOAD ALL button to get them all at once in a ZIP archive.
+            </div>
           </div>
         </div>
       </div>
@@ -329,6 +349,18 @@ exports[`Previous uploads exist locally stored creates a screenshot for the pdf 
       >
         Convert to JPG Images
       </button>
+      <div>
+        <img
+          src="/upload.gif"
+          style={
+            Object {
+              "marginTop": "40px",
+              "maxWidth": "740px",
+              "width": "100%",
+            }
+          }
+        />
+      </div>
     </div>
   </div>
 </div>

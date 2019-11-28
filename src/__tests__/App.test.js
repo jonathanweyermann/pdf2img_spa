@@ -13,8 +13,8 @@ import mock from 'xhr-mock';
 
 describe('First React component test with Enzyme', () => {
   it('renders welcome message', () => {
-    const wrapper = shallow(<App />);
-    const welcome = <div className="descriptor">Convert a PDF file to a set of optimized JPG images</div>
+    const wrapper = mount(<App />);
+    const welcome = <div className="center heading-font">Convert a PDF file to a set of optimized JPG images</div>
     expect(wrapper.contains(welcome)).toBe(true);
   });
 

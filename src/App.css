@@ -64,8 +64,10 @@
 
 .tight-container {
   max-width: 700px;
+  color: #000000;
   text-align: left;
   display: inline-block;
+  padding: 100px 0 0 0;
 }
 
 .center {
