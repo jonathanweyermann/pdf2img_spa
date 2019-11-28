@@ -130,11 +130,11 @@ class Main extends Component {
             You can download each image individually by clicking on the download button below each image,
             or you can download a ZIP file containing all the images.
           </Col>
-          <Col md="4"><h4>Look access your previously uploaded PDFs</h4>
+          <Col md="4"><h4>Access your previously uploaded PDFs</h4>
             Previously uploaded PDFs are will be available to be viewed and downloaded again on the same computer. Images and PDFs and
             ZIP files are stored on the server for 30 days before they are erased.
           </Col>
-          <Col md="4"><h4>Full Size image viewer</h4>
+          <Col md="4"><h4>Full Size Image Viewer</h4>
             Click on the image to open the image full size. You'll be able to download, rotate or see an
             even bigger version of the image.
           </Col>
