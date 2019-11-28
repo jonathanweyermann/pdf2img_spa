@@ -111,9 +111,8 @@ class Main extends Component {
         <Container>
           <div className="tight-container">
            <div className='center heading-font'>Convert a PDF file to a set of optimized JPG images</div>
-           <div className="mt2">This free tool converts PDFs to JPGs. It shows thumbnails of each page so you can easily enlarge and download only the files you wish to download</div>
-           <div className="mt2"><span className="big">1</span> Click the 'Choose File' button and select a PDF file you wish to convert. Click 'Convert to JPG images' and wait for the conversion process to finish.</div>
-           <div><span className="big">2</span> Download the results either file by file or click the All Images button to get them all at once in a ZIP archive.</div>
+           <div className="mt2 sub-heading-font">This free tool converts PDFs to JPGs. It shows thumbnails of each page so you can easily enlarge and download only the files you wish to download</div>
+           <div className="mt2 sub-heading-font">Click the 'Choose File' button and select a PDF file you wish to convert. Click 'Convert to JPG images' and wait for the conversion process to finish.</div>
           </div>
         </Container>
       </div>
@@ -123,18 +122,18 @@ class Main extends Component {
   features = () => {
     return (
       <React.Fragment>
-        <div><img style={{ width: '100%', maxWidth: '740px', marginTop: '40px'}}  src="/upload.gif" /></div>
+        <div><img className="image-style" src="/upload.gif" /></div>
         <Row>
           <Col xs="12" className='center heading-font-plus'>Features</Col>
-          <Col md="4"><h4>Download a ZIP Archive</h4>
+          <Col md="4" className='mt2'><h4>Download a ZIP Archive</h4>
             You can download each image individually by clicking on the download button below each image,
             or you can download a ZIP file containing all the images.
           </Col>
-          <Col md="4"><h4>Access your previously uploaded PDFs</h4>
+          <Col md="4" className='mt2'><h4>Access your previously uploaded PDFs</h4>
             Previously uploaded PDFs are will be available to be viewed and downloaded again on the same computer. Images and PDFs and
             ZIP files are stored on the server for 30 days before they are erased.
           </Col>
-          <Col md="4"><h4>Full Size Image Viewer</h4>
+          <Col md="4" className='mt2'><h4>Full Size Image Viewer</h4>
             Click on the image to open the image full size. You'll be able to download, rotate or see an
             even bigger version of the image.
           </Col>

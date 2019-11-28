@@ -60,13 +60,31 @@ class App extends Component {
               {
                 this.state.previous_uploads.map((item, i) => {
                   return (<NavDropdown.Item key={i} href={`/uploaded/${i}`} state={ {item: item}}>{item["uploadFileName"]}</NavDropdown.Item>)
-              })}
+                })
+              }
+              { this.dropDownNav() }
            </NavDropdown>
            <Nav.Link href="/about">About</Nav.Link>
          </Nav>
        </Navbar.Collapse>
      </Navbar>
     )
+  }
+
+  dropUploads = () => {
+    localStorage.removeItem('previous_uploads')
+    this.setState({previous_uploads: this.grabPreviousUploads()})
+  }
+
+  dropDownNav = () => {
+    {
+      if (this.state.previous_uploads.length>0){
+        return (<React.Fragment>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item onClick={this.dropUploads}>Drop Previous Uploads</NavDropdown.Item>
+                </React.Fragment>)
+      }
+    }
   }
 
   previous_uploads_update = (index) => {
