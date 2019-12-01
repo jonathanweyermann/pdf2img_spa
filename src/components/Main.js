@@ -122,7 +122,7 @@ class Main extends Component {
   features = () => {
     return (
       <React.Fragment>
-        <div><img className="image-style" src="/upload.gif" /></div>
+        <div><img className="image-style" src="/upload.gif" alt="upload video" /></div>
         <Row>
           <Col xs="12" className='center heading-font-plus'>Features</Col>
           <Col md="4" className='mt2'><h4>Download a ZIP Archive</h4>

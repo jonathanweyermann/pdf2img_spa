@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import Main from './components/Main'
 import About from './components/About'
-import axios from 'axios'
 import Amplify from 'aws-amplify';
 import awsmobile from './aws-exports';
 import FileStatus from './util/FileStatus'
@@ -11,12 +10,11 @@ import { Router, Switch, Route } from "react-router-dom";
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faDownload } from '@fortawesome/free-solid-svg-icons'
 import { createBrowserHistory } from 'history';
+import MetaTags from 'react-meta-tags';
 require('dotenv').config()
 library.add(faDownload)
 
 Amplify.configure(awsmobile);
-
-axios.defaults.withCredentials = true
 
 const history = createBrowserHistory();
 
@@ -51,7 +49,7 @@ class App extends Component {
  header = () => {
    return (
      <Navbar className="navbar-dark" expand="sm" >
-       <Navbar.Brand href="#home">PDF 2 Image</Navbar.Brand>
+       <Navbar.Brand href="#home">PDF 2 JPGs</Navbar.Brand>
        <Navbar.Toggle aria-controls="basic-navbar-nav" />
        <Navbar.Collapse id="basic-navbar-nav">
          <Nav className="mr-auto">
@@ -77,13 +75,11 @@ class App extends Component {
   }
 
   dropDownNav = () => {
-    {
-      if (this.state.previous_uploads.length>0){
-        return (<React.Fragment>
-                  <NavDropdown.Divider />
-                  <NavDropdown.Item onClick={this.dropUploads}>Drop Previous Uploads</NavDropdown.Item>
-                </React.Fragment>)
-      }
+    if (this.state.previous_uploads.length>0){
+      return (<React.Fragment>
+                <NavDropdown.Divider />
+                <NavDropdown.Item onClick={this.dropUploads}>Drop Previous Uploads</NavDropdown.Item>
+              </React.Fragment>)
     }
   }
 
@@ -97,6 +93,12 @@ class App extends Component {
     return (
       <Router history={history}>
         <div className="App">
+          <MetaTags>
+             <title>PDF 2 JPGs</title>
+             <meta name="keywords" content="PDF, JPG, Convert, Conversion, PDF to JPG, PDF to Image, Image" />
+             <meta name="description" content="Free tool to convert PDFs to JPGs. It shows thumbnails of each page, and also generates a zip file to download" />
+             <meta name="author" content="Jonathan Weyermann" />
+           </MetaTags>
           <header className="App-header">
             { this.header() }
           </header>

@@ -58,8 +58,8 @@ describe('Previous uploads exist locally stored', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('creates a pdf dropdown view for three previously uploaded pdfs', () => {
+  it('creates a pdf dropdown view for three previously uploaded pdfs plus a drop option', () => {
     const wrapper = mount(<App />);
-    chai_expect(wrapper.find('a.dropdown-item')).to.have.lengthOf(3);
+    chai_expect(wrapper.find('a.dropdown-item')).to.have.lengthOf(4);
   });
 });

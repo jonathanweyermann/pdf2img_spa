@@ -16,8 +16,7 @@ class S3Upload extends Component {
       var options = {
         headers: {
           'Content-Type': `application/${this.props.data.uploadFileType}`
-        },
-        withCredentials: true
+        }
       };
       axios.put(signedRequest,this.props.data.uploadFile,options)
       .then(result => {

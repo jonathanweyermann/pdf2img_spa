@@ -29,7 +29,7 @@ app.use(awsServerlessExpressMiddleware.eventContext())
 
 // Enable CORS for all methods
 app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "http://localhost:3000")
+  res.header("Access-Control-Allow-Origin", "https://www.pdf2jpgs.com")
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
   res.header("Access-Control-Allow-Credentials", "true")
   next()
@@ -65,7 +65,7 @@ app.post('/devpdfs', function(req, res) {
 
   var fileName = req.body.fileName;
   var fileType = req.body.fileType;
-  if (fileType == "PDF") {
+  if (fileType === "PDF") {
     fileType = "application/pdf";
   }
   // Set up the payload of what we are sending to the S3 api
@@ -80,22 +80,17 @@ app.post('/devpdfs', function(req, res) {
   // Make a request to the S3 API to get a signed URL which we can use to upload our file
   s3.getSignedUrl('putObject', s3Params, (err, data) => {
     if(err){
-
       console.log(`err: ${err}`);
       res.json({failure: 'post call failed', err: err});
-      //return ({statusCode: 500, body: {success: false, error: err}});
     }
     // Data payload of what we are sending back, the url of the signedRequest and a URL where we can access the content after its saved.
     const returnData = {
       signedRequest: data,
       url: `https://${S3_BUCKET}.s3.amazonaws.com/pdfs/${fileName}`
     };
-
     // Send it all back
     res.json({success: 'post call succeed!', url: returnData.url, body: returnData});
-    //return ({statusCode: 200, body: {success:true, data:{returnData}}});
   });
-
 });
 
 app.post('/devpdfs/*', function(req, res) {

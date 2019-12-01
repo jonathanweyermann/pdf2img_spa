@@ -14,7 +14,7 @@ exports[`First React component test with Enzyme renders correctly 1`] = `
         className="navbar-brand"
         href="#home"
       >
-        PDF 2 Image
+        PDF 2 JPGs
       </a>
       <button
         aria-controls="basic-navbar-nav"
@@ -96,27 +96,14 @@ exports[`First React component test with Enzyme renders correctly 1`] = `
               Convert a PDF file to a set of optimized JPG images
             </div>
             <div
-              className="mt2"
+              className="mt2 sub-heading-font"
             >
               This free tool converts PDFs to JPGs. It shows thumbnails of each page so you can easily enlarge and download only the files you wish to download
             </div>
             <div
-              className="mt2"
+              className="mt2 sub-heading-font"
             >
-              <span
-                className="big"
-              >
-                1
-              </span>
-               Click the 'Choose File' button and select a PDF file you wish to convert. Click 'Convert to JPG images' and wait for the conversion process to finish.
-            </div>
-            <div>
-              <span
-                className="big"
-              >
-                2
-              </span>
-               Download the results either file by file or click the DOWNLOAD ALL button to get them all at once in a ZIP archive.
+              Click the 'Choose File' button and select a PDF file you wish to convert. Click 'Convert to JPG images' and wait for the conversion process to finish.
             </div>
           </div>
         </div>
@@ -142,14 +129,45 @@ exports[`First React component test with Enzyme renders correctly 1`] = `
       </button>
       <div>
         <img
+          alt="upload video"
+          className="image-style"
           src="/upload.gif"
-          style={
-            Object {
-              "marginTop": "40px",
-              "maxWidth": "740px",
-              "width": "100%",
-            }
-          }
+        />
+      </div>
+      <div
+        className="row"
+      >
+        <div
+          className="center heading-font-plus col-12"
+        >
+          Features
+        </div>
+        <div
+          className="mt2 col-md-4"
+        >
+          <h4>
+            Download a ZIP Archive
+          </h4>
+          You can download each image individually by clicking on the download button below each image, or you can download a ZIP file containing all the images.
+        </div>
+        <div
+          className="mt2 col-md-4"
+        >
+          <h4>
+            Access your previously uploaded PDFs
+          </h4>
+          Previously uploaded PDFs are will be available to be viewed and downloaded again on the same computer. Images and PDFs and ZIP files are stored on the server for 30 days before they are erased.
+        </div>
+        <div
+          className="mt2 col-md-4"
+        >
+          <h4>
+            Full Size Image Viewer
+          </h4>
+          Click on the image to open the image full size. You'll be able to download, rotate or see an even bigger version of the image.
+        </div>
+        <div
+          className="col-md-4"
         />
       </div>
     </div>
@@ -171,7 +189,7 @@ exports[`Previous uploads exist locally stored creates a screenshot for the pdf 
         className="navbar-brand"
         href="#home"
       >
-        PDF 2 Image
+        PDF 2 JPGs
       </a>
       <button
         aria-controls="basic-navbar-nav"
@@ -273,6 +291,19 @@ exports[`Previous uploads exist locally stored creates a screenshot for the pdf 
               >
                 TrainTickets
               </a>
+              <div
+                className="dropdown-divider"
+                role="separator"
+              />
+              <a
+                className="dropdown-item"
+                href="#"
+                onClick={[Function]}
+                onKeyDown={[Function]}
+                role="button"
+              >
+                Drop Previous Uploads
+              </a>
             </div>
           </div>
           <a
@@ -305,27 +336,14 @@ exports[`Previous uploads exist locally stored creates a screenshot for the pdf 
               Convert a PDF file to a set of optimized JPG images
             </div>
             <div
-              className="mt2"
+              className="mt2 sub-heading-font"
             >
               This free tool converts PDFs to JPGs. It shows thumbnails of each page so you can easily enlarge and download only the files you wish to download
             </div>
             <div
-              className="mt2"
+              className="mt2 sub-heading-font"
             >
-              <span
-                className="big"
-              >
-                1
-              </span>
-               Click the 'Choose File' button and select a PDF file you wish to convert. Click 'Convert to JPG images' and wait for the conversion process to finish.
-            </div>
-            <div>
-              <span
-                className="big"
-              >
-                2
-              </span>
-               Download the results either file by file or click the DOWNLOAD ALL button to get them all at once in a ZIP archive.
+              Click the 'Choose File' button and select a PDF file you wish to convert. Click 'Convert to JPG images' and wait for the conversion process to finish.
             </div>
           </div>
         </div>
@@ -351,14 +369,45 @@ exports[`Previous uploads exist locally stored creates a screenshot for the pdf 
       </button>
       <div>
         <img
+          alt="upload video"
+          className="image-style"
           src="/upload.gif"
-          style={
-            Object {
-              "marginTop": "40px",
-              "maxWidth": "740px",
-              "width": "100%",
-            }
-          }
+        />
+      </div>
+      <div
+        className="row"
+      >
+        <div
+          className="center heading-font-plus col-12"
+        >
+          Features
+        </div>
+        <div
+          className="mt2 col-md-4"
+        >
+          <h4>
+            Download a ZIP Archive
+          </h4>
+          You can download each image individually by clicking on the download button below each image, or you can download a ZIP file containing all the images.
+        </div>
+        <div
+          className="mt2 col-md-4"
+        >
+          <h4>
+            Access your previously uploaded PDFs
+          </h4>
+          Previously uploaded PDFs are will be available to be viewed and downloaded again on the same computer. Images and PDFs and ZIP files are stored on the server for 30 days before they are erased.
+        </div>
+        <div
+          className="mt2 col-md-4"
+        >
+          <h4>
+            Full Size Image Viewer
+          </h4>
+          Click on the image to open the image full size. You'll be able to download, rotate or see an even bigger version of the image.
+        </div>
+        <div
+          className="col-md-4"
         />
       </div>
     </div>

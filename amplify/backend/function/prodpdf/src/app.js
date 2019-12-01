@@ -29,7 +29,7 @@ app.use(awsServerlessExpressMiddleware.eventContext())
 
 // Enable CORS for all methods
 app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "https://d3mj1nbhrzlbf6.cloudfront.net")
+  res.header("Access-Control-Allow-Origin", "https://www.pdf2jpgs.com")
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
   res.header("Access-Control-Allow-Credentials", "true")
   next()

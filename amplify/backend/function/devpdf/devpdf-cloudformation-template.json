@@ -62,8 +62,8 @@
 				"Runtime": "nodejs10.x",
 				"Timeout": "25",
 				"Code": {
-					"S3Bucket": "pdf2img-production-20191111184601-deployment",
-					"S3Key": "amplify-builds/devpdf-3632383931586b466254-build.zip"
+					"S3Bucket": "pdf2img-dev-20191113221227-deployment",
+					"S3Key": "amplify-builds/devpdf-41684756597547694d73-build.zip"
 				}
 			}
 		},
