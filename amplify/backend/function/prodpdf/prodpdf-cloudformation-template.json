@@ -63,7 +63,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "pdf2img-production-20191111184601-deployment",
-					"S3Key": "amplify-builds/prodpdf-4e49306e453938594f54-build.zip"
+					"S3Key": "amplify-builds/prodpdf-796d35354f5673476d34-build.zip"
 				}
 			}
 		},
