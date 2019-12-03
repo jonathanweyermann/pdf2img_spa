@@ -94,7 +94,7 @@ class App extends Component {
       <Router history={history}>
         <div className="App">
           <MetaTags>
-             <title>PDF 2 JPGs</title>
+             <title>PDF 2 JPGs - Free PDF to JPG Converter with thumbnail previews</title>
              <meta name="keywords" content="PDF, JPG, Convert, Conversion, PDF to JPG, PDF to Image, Image" />
              <meta name="description" content="Free tool to convert PDFs to JPGs. It shows thumbnails of each page, and also generates a zip file to download" />
              <meta name="author" content="Jonathan Weyermann" />
