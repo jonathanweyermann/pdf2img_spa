@@ -1,0 +1,27 @@
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  color: var(--app-fg);
+}
+
+.logo-mark {
+  flex: none;
+  border-radius: 8px;
+  box-shadow: 0 6px 20px -6px rgba(91, 99, 255, 0.7);
+}
+
+.logo__word {
+  font-size: 1.1rem;
+  font-weight: 750;
+  letter-spacing: -0.03em;
+}
+
+.logo__two {
+  background: var(--text-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  padding: 0 0.02em;
+}

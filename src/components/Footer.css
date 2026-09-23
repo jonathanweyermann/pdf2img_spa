@@ -1,0 +1,70 @@
+.footer {
+  background: var(--app-bg);
+  color: var(--app-muted);
+  border-top: 1px solid var(--app-line);
+  font-size: 0.9rem;
+}
+
+.footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding-top: 2.5rem;
+  padding-bottom: 2rem;
+}
+
+.footer__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.footer__name {
+  color: var(--app-fg);
+  font-weight: 650;
+}
+
+.footer__tag {
+  font-size: 0.85rem;
+}
+
+.footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.footer__links a {
+  text-decoration: none;
+}
+
+.footer__links a:hover {
+  color: var(--app-fg);
+}
+
+.footer__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding-top: 1.25rem;
+  padding-bottom: 1.75rem;
+  border-top: 1px solid var(--app-line);
+  color: var(--app-faint);
+  font-size: 0.82rem;
+}
+
+.footer__credit {
+  text-decoration: none;
+}
+
+.footer__credit strong {
+  color: var(--app-muted);
+  font-weight: 600;
+}
+
+.footer__credit:hover strong {
+  color: var(--app-fg);
+}

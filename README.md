@@ -1,68 +1,38 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# pdf2jpgs.com frontend
 
-## Available Scripts
+React single-page app for [pdf2jpgs.com](https://pdf2jpgs.com): drop in a PDF, get every page back as a JPG,
+preview them in a grid, open them full size, and download one page or a ZIP of all of them.
 
-In the project directory, you can run:
+The conversion itself happens in the [pdf2img](https://github.com/jonathanweyermann/pdf2img) lambda. This app:
 
-### `yarn start`
+1. reads the page count locally with pdf.js,
+2. asks the API (`REACT_APP_API_URL`) for a presigned S3 URL and PUTs the PDF to `pdfs/<pcid><name>.pdf`,
+3. polls the bucket (`REACT_APP_IMAGE_BUCKET`) for `<base>/image<N>.jpg` and `<base>.zip` as the lambda writes them.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Recent conversions are stored in `localStorage` under `previous_uploads` (same format as the original site).
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Development
 
-### `yarn test`
+```sh
+yarn install
+yarn start        # http://localhost:3000
+yarn test         # vitest, run once
+yarn test:watch
+yarn build        # outputs to build/ (what `amplify publish` deploys)
+```
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+`yarn start` needs no `.env`. The API and bucket only allow `https://pdf2jpgs.com` via CORS, so in dev the Vite
+server proxies them (`/__api`, `/__s3`, see `vite.config.js`). **Local uploads go to the production bucket.**
+Set `REACT_APP_API_URL` in a `.env` file to target another API, or `VITE_DIRECT=true` to skip the proxy.
 
-### `yarn build`
+To smoke-test a production bundle locally: `VITE_USE_PROXY=true yarn build && yarn preview`.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Deploy
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+`dev_deploy.sh` / `prod_deploy.sh` copy `envs/<env>/.env` into place and run `amplify publish`, which runs
+`yarn build` and uploads `build/`. Environment variables keep their `REACT_APP_` prefix.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Stack
 
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Vite, React 19, React Router 7, pdf.js, lucide icons, and plain CSS (design tokens in `src/index.css`, modeled on
+jonathanweyermann.com).

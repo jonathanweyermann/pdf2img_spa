@@ -1,62 +1,36 @@
 {
   "name": "pdf2img_spa",
-  "version": "0.1.0",
+  "version": "2.0.0",
   "private": true,
-  "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.25",
-    "@fortawesome/free-solid-svg-icons": "^5.11.2",
-    "@fortawesome/react-fontawesome": "^0.1.7",
-    "aws-amplify": "^1.2.2",
-    "aws-sdk": "^2.552.0",
-    "axios": "^0.19.0",
-    "bootstrap": "^4.3.1",
-    "dotenv": "^8.2.0",
-    "enzyme": "^3.10.0",
-    "enzyme-adapter-react-16": "^1.15.1",
-    "history": "^4.10.1",
-    "jest-enzyme": "^7.1.2",
-    "query-string": "^6.8.3",
-    "react": "^16.10.2",
-    "react-async-component": "^2.0.0",
-    "react-bootstrap": "^1.0.0-beta.14",
-    "react-dom": "^16.10.2",
-    "react-meta-tags": "^0.7.4",
-    "react-modal-image": "^2.5.0",
-    "react-paginate": "^6.3.0",
-    "react-pdf": "^4.1.0",
-    "react-router-bootstrap": "^0.25.0",
-    "react-router-dom": "^5.1.2",
-    "react-scripts": "3.2.0",
-    "react-spinners": "^0.6.1",
-    "react-test-renderer": "^16.11.0",
-    "use-react-router": "^1.0.7"
-  },
+  "type": "module",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --verbose --coverage  --watchAll",
-    "eject": "react-scripts eject"
+    "start": "vite",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "dependencies": {
+    "lucide-react": "^0.460.0",
+    "pdfjs-dist": "^4.8.69",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router": "^7.1.0"
   },
   "devDependencies": {
-    "aws-sdk-mock": "^4.5.0",
-    "chai": "^4.2.0",
-    "react-testing-library": "^8.0.1",
-    "sinon": "^7.5.0",
-    "xhr-mock": "^2.5.0"
-  }
+    "@testing-library/dom": "^10",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.1.0",
+    "@testing-library/user-event": "^14.5.2",
+    "@vitejs/plugin-react": "^4.3.4",
+    "jsdom": "^25.0.1",
+    "vite": "^6.0.3",
+    "vitest": "^2.1.8"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not op_mini all"
+  ]
 }

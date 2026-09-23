@@ -1,2 +1,6 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
+# Conversion pages are per-browser (backed by localStorage), so there is nothing to index.
+Disallow: /uploaded/
+
+Sitemap: https://pdf2jpgs.com/sitemap.xml

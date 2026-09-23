@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="alternate icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#070a12" />
+    <meta name="color-scheme" content="dark light" />
+    <script>
+      // Apply the saved theme before first paint to avoid a flash.
+      try {
+        if (localStorage.getItem('theme') === 'light') {
+          document.documentElement.setAttribute('data-theme', 'light');
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff');
+        }
+      } catch (e) {}
+    </script>
+    <title>PDF 2 JPGs - Free PDF to JPG Converter with thumbnail previews</title>
+    <meta name="description" content="Free tool to convert PDFs to JPGs. It shows thumbnails of each page, and also generates a zip file to download" />
+    <meta name="keywords" content="PDF, JPG, Convert, Conversion, PDF to JPG, PDF to Image, Image" />
+    <meta name="author" content="Jonathan Weyermann" />
+    <meta property="og:site_name" content="PDF 2 JPGs" />
+    <meta property="og:title" content="PDF 2 JPGs - Free PDF to JPG Converter" />
+    <meta property="og:description" content="Drop a PDF, get every page back as a crisp JPG. Preview, rotate, and download one page or the whole set as a ZIP." />
+    <meta property="og:url" content="https://pdf2jpgs.com/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://pdf2jpgs.com/og-image.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="pdf2jpgs.com: PDF to JPG, page by page. A PDF split into page images." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="PDF 2 JPGs - Free PDF to JPG Converter" />
+    <meta name="twitter:description" content="Drop a PDF, get every page back as a crisp JPG. Preview, rotate, and download one page or the whole set as a ZIP." />
+    <meta name="twitter:image" content="https://pdf2jpgs.com/og-image.png" />
+    <meta name="twitter:image:alt" content="pdf2jpgs.com: PDF to JPG, page by page. A PDF split into page images." />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..800&display=swap" rel="stylesheet" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-4245954284311066",
+        enable_page_level_ads: true
+      });
+    </script>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
